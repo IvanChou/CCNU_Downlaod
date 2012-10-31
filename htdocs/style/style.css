@@ -1,0 +1,80 @@
+/*  
+Theme Name: CCNU_Download
+Theme URI: http://down.ccnu.edu.cn 
+Description: 华师下载中心（网络技术中心）
+Author: xworm
+License: GNU General Public License v2.0
+License URI: http://www.gnu.org/licenses/gpl-2.0.html
+*/
+
+
+html { margin:0px; padding:0px; border:none; font-size: 12px; font-family: "Helvetica Neue", "微软雅黑", Tahoma, Arial, sans-serif !important;_font-family: Tahoma, Arial, sans-serif;}
+body { margin:0px; padding:0px; border:none; background:#FFFFFF;}
+
+ul {list-style: none;padding: 0;margin: 0;}
+
+a { text-decoration:none; padding:0px; margin:0px; color:#000000; } 
+a:visited{ text-decoration:none; padding:0px; margin:0px; color:#000000; }
+a:hover { text-decoration:none; padding:0px; margin:0px; color:#000000; }
+a.more-link { display:block; padding:8px; float:right;}
+
+img {border: none;}
+
+
+/* header defines */
+header {width: 960px;height: 51px;position: relative;background: url(../images/hed_top.png) no-repeat;margin: 0 auto;}
+.logo {font-size: 0;display: block;width: 310px;height: 38px;background: url(../images/hed_logo.png) no-repeat;position: absolute;top:6px;}
+nav {font-size: 0;width: 475px;height: 29px;position: absolute;top: 12px;left: 370px;}
+nav a {height: 29px;float: left;display: inline;}
+a#home {width: 95px;background: url(../images/hed_nav.png) no-repeat;}
+a#home:hover, a#home.current {background: url(../images/hed_nav.png) 0 -31px no-repeat;}
+a#categories {width: 133px;background: url(../images/hed_nav.png) -95px 0 no-repeat;}
+a#categories:hover, a#categories.current {background: url(../images/hed_nav.png) -95px -31px no-repeat;}
+a#referrals {width: 133px;background: url(../images/hed_nav.png) -228px 0 no-repeat;}
+a#referrals:hover, a#referrals.current {width: 133px;background: url(../images/hed_nav.png) -228px -31px no-repeat;}
+a#ranklist {width: 114px;background: url(../images/hed_nav.png) -361px 0 no-repeat;}
+a#ranklist:hover, a#ranklist.current {width: 114px;background: url(../images/hed_nav.png) -361px -31px no-repeat;}
+
+/* home defines */
+.wrap {width: 960px;margin:16px auto;}
+
+.scroll_images {width: 685px;height: 312px;float: left;}
+.scroll_images img {width: 685px;height: 43px;display: block;}
+.scroll_images img.current {height:226px; }
+img#sol_img_1 {background: #0e385b;}
+img#sol_img_2 {background: #3598b9;}
+img#sol_img_3 {background: #79b7d1;}
+
+.home_right {height: 312px;width: 257px;float: right;background: url(../images/idx_element.png) no-repeat;position: relative;}
+.home_right form {width: 232px;height: 34px;position: absolute;right: 0;background: #ffffff;}
+#search {width: 210px;height: 20px;border: none;padding: 4px 10px 2px 2px; margin: 3px 5px 5px;}
+button {display: none;}
+.home_right h2 {position: absolute;left: 15px;top: 48px;font-weight: normal;font-size: 20px;color: #005c96;height: 28px;line-height: 28px;margin: 0;}
+.home_right ul {position: absolute;left: 15px;top: 92px;width: 226px;}
+.home_right ul li {height: 25px;font-size: 13px;list-style: circle inside;padding-left: 2px;}
+.home_right ul li + li {border-top: 1px #bbdae7 solid;}
+.home_right ul li a {height: 26px;line-height: 26px;}
+.home_right ul li span {height: 26px;line-height: 26px;float: right;margin-right: 20px;}
+
+.banner{width: 960px;height: 114px;clear: both;}
+.banner img {width: 960;height: 90px;margin: 12px auto;}
+
+.home_box {width: 232px;height: 305px;float: left;margin:0 1px;background: url(../images/idx_element.png) -25px -1px;}
+.home_box + .home_box{margin:0 0 0 10px;}
+.home_box h2 {margin: 0;width: 202px;height: 32px;line-height: 32px;color: #ffffff;font-size: 20px;padding: 0 15px;}
+.home_box ol {background: #ffffff;width: 200px;padding: 6px 15px;margin: 0;border: #1c6cb5 1px solid;border-top: none;list-style-position: inside;font-style: italic;font-family: Helvetica;color: #8a8a8a;}
+.home_box li {height: 25px;font-size: 13px;padding-left: 2px;}
+.home_box li + li {border-top: #dadbda 1px dashed;}
+.home_box li a {height: 26px;line-height: 26px;font-style:normal;}
+
+.tags_box {width: 960px;-moz-border-radius:4px; -webkit-border-radius:4px; border-radius:4px;background: #005d97;margin: 12px 0;padding-bottom: 5px;}
+.tags_box h2 {margin: 0;color: #ffffff;padding: 8px 16px;font-size: 20px;}
+.tags_box .tags {width: 950px;margin: 0 auto;background: #ffffff;height: 30px;line-height: 30px;}
+.tags_box .tags a {padding: 0 5px;}
+.super_hot {font-size: 28px;}
+.very_hot {font-size: 24px;}
+.hotter {font-size: 20px;}
+.hot {font-size: 16px;}
+
+/* footer defines */
+footer {width: 960px;margin: 16px auto;border-top: #000000 1px solid;text-align: center;line-height: 20px;}
