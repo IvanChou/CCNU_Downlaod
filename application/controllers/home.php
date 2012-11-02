@@ -10,7 +10,12 @@ class Home extends CI_Controller {
 
 	public function index()
 	{
-		$data = $this->softs_model->get_softs();
+		$query = array(
+										'select'=>'soft_name,down_count,soft_url',
+										'limit'	=>'10',
+										'order'	=>'down_count desc'
+									);
+		$data['weekly'] = $this->softs_model->get_softs($query);
 		//var_dump($data);
 		$this->load->view('home',$data);
 	}
