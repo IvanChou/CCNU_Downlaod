@@ -8,14 +8,20 @@ class Softs_model extends CI_Model {
 	
 	public function get_softs($param = FALSE)
 	{
-		if($id === FALSE)
+		if($param === FALSE)
 		{
 			$query = $this->db->get('softs');
 			return $query->result_array();
 		}
 		
-		$query = $this->db->get_where('softs',array('id'=>$id));
-		return $query->row_array();
+		$this->db->from('softs');
+		$param['select'] && $this->db->select($param['select']);
+		$param['where'] && $this->db->where($param['where']);
+		$param['limit'] && $this->db->limit($param['limit']);
+		$param['order'] && $this->db->order_by($param['order']);
+		
+		$query = $this->db->get();
+		return $query->result_array();
 	}
 }
 	
