@@ -31,14 +31,9 @@
       </form>
       <h2>本周下载排行</h2>
       <ul>
-        <li><a href="#">腾讯QQ</a><span>1230次</span></li>
-        <li><a href="#">360安全卫士</a><span>1102次</span></li>
-        <li><a href="#">腾讯QQ</a><span>1230次</span></li>
-        <li><a href="#">360安全卫士</a><span>1102次</span></li>
-        <li><a href="#">腾讯QQ</a><span>1230次</span></li>
-        <li><a href="#">360安全卫士</a><span>1102次</span></li>
-        <li><a href="#">腾讯QQ</a><span>1230次</span></li>
-        <li><a href="#">360安全卫士</a><span>1102次</span></li>
+      	<?php foreach($weekly as $k): ?>
+        <li><a href="<?=$k['soft_url']?>"><?=$k['soft_name']?></a><span><?=$k['down_count']?>次</span></li>
+        <?php endforeach; ?>
       </ul>
     </div>
     <div class="banner"><img src="images/banner.png" /></div>
