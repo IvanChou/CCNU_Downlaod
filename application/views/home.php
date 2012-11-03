@@ -2,7 +2,7 @@
 <html dir="ltr" lang="zh-CN">
 <head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>华中师范大学下载中心</title>
-<link rel="stylesheet" href="style/style.css" type="text/css" media="all">
+<link rel="stylesheet" href="<?=$site_url?>style/style.css" type="text/css" media="all">
 </head>
 <body>
 <!-- 页面头部 开始 -->
@@ -20,9 +20,9 @@
 <!-- 首页末版 开始 -->
   <div class="wrap">
     <div class="scroll_images">
-      <img id="sol_img_1" class="current" src="images/scroll.png" />
-      <img id="sol_img_2" src="images/scroll.png" />
-      <img id="sol_img_3" src="images/scroll.png" />
+      <img id="sol_img_1" class="current" src="<?=$site_url?>images/scroll.png" />
+      <img id="sol_img_2" src="<?=$site_url?>images/scroll.png" />
+      <img id="sol_img_3" src="<?=$site_url?>images/scroll.png" />
     </div>
     <div class="home_right">
       <form>
@@ -36,20 +36,13 @@
         <?php endforeach; ?>
       </ul>
     </div>
-    <div class="banner"><img src="images/banner.png" /></div>
+    <div class="banner"><img src="<?=$site_url?>images/banner.png" /></div>
     <div class="home_box">
       <h2>下载总排行</h2>
       <ol>
-        <li><a href="#">360安全卫士</a></li>
-        <li><a href="#">360杀毒</a></li>
-        <li><a href="#">小红伞</a></li>
-        <li><a href="#">腾讯QQ</a></li>
-        <li><a href="#">快播影视</a></li>
-        <li><a href="#">百度影音</a></li>
-        <li><a href="#">腾讯电脑管家</a></li>
-        <li><a href="#">H3C客户端</a></li>
-        <li><a href="#">自由门</a></li>
-        <li><a href="#">Windows8_x64_msdn</a></li>  
+      	<?php foreach($total as $k): ?>
+        <li><a href="<?=$k['soft_url']?>"><?=$k['soft_name']?></a></li>
+        <?php endforeach; ?>
       </ol>
     </div>
     <div class="home_box">
@@ -102,8 +95,9 @@
     <div class="tags_box">
       <h2>热门标签</h2>
       <div class="tags">
-        <a href="#" class="super_hot">QQ</a>
-        <a href="#" class="hot">腾讯</a>
+      	<?php foreach($hotag as $k): ?>
+        <a href="<?=$k['url']?>" class="<?=$k['class']?>"><?=$k['tag_name']?></a>
+        <?php endforeach; ?>
       </div>
     </div>
   </div>

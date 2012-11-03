@@ -62,19 +62,20 @@ button {display: none;}
 .home_box {width: 232px;height: 305px;float: left;margin:0 1px;background: url(../images/idx_element.png) -25px -1px;}
 .home_box + .home_box{margin:0 0 0 10px;}
 .home_box h2 {margin: 0;width: 202px;height: 32px;line-height: 32px;color: #ffffff;font-size: 20px;padding: 0 15px;}
-.home_box ol {background: #ffffff;width: 200px;padding: 6px 15px;margin: 0;border: #1c6cb5 1px solid;border-top: none;list-style-position: inside;font-style: italic;font-family: Helvetica;color: #8a8a8a;}
+.home_box ol {background: #ffffff;width: 200px;padding: 6px 15px;margin: 0;border: #1c6cb5 1px solid;border-top: none;list-style-position: inside;font-style: italic;font-family: Helvetica;color: #8a8a8a;height: 260px;}
 .home_box li {height: 25px;font-size: 13px;padding-left: 2px;}
 .home_box li + li {border-top: #dadbda 1px dashed;}
 .home_box li a {height: 26px;line-height: 26px;font-style:normal;}
 
 .tags_box {width: 960px;-moz-border-radius:4px; -webkit-border-radius:4px; border-radius:4px;background: #005d97;margin: 12px 0;padding-bottom: 5px;}
 .tags_box h2 {margin: 0;color: #ffffff;padding: 8px 16px;font-size: 20px;}
-.tags_box .tags {width: 950px;margin: 0 auto;background: #ffffff;height: 30px;line-height: 30px;}
-.tags_box .tags a {padding: 0 5px;}
+.tags_box .tags {width: 950px;margin: 0 auto;background: #ffffff;line-height: 30px;}
+.tags_box .tags a {padding: 0 5px;display: inline-block;}
 .super_hot {font-size: 28px;}
 .very_hot {font-size: 24px;}
 .hotter {font-size: 20px;}
 .hot {font-size: 16px;}
+.normal {font-size: 14px;}
 
 /* footer defines */
 footer {width: 960px;margin: 16px auto;border-top: #000000 1px solid;text-align: center;line-height: 20px;}

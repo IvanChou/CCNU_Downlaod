@@ -21,7 +21,14 @@ class Softs_model extends CI_Model {
 		$param['order'] && $this->db->order_by($param['order']);
 		
 		$query = $this->db->get();
-		return $query->result_array();
+		$result = $query->result_array();
+		
+		foreach($result as $k=>$v){
+			$v['soft_url'] && $result[$k]['soft_url'] = base_url().$v['soft_url'];
+		}
+		
+		return($result);
+
 	}
 }
 	
