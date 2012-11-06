@@ -1,6 +1,6 @@
 <?php
 if (isset($_REQUEST['list'])){
-	if ($_SESSION['USERNAME']=='cd_admin'){
+	if ($_SESSION['USERNAME']=='cd-admin'){
 		switch ($_REQUEST['list']){
 		case 'view':
 		$title = '用户管理';

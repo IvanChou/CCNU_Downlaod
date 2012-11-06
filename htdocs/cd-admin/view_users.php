@@ -27,17 +27,17 @@ function HTMerDel()
 <td colspan="6">
 <div class="bulk-actions align-left">
 <?php
-//仅cd_admin可以添加管理员
-if ($_SESSION['USERNAME']=='cd_admin'){
+//仅cd-admin可以添加管理员
+if ($_SESSION['USERNAME']=='cd-admin'){
 	echo '<a href="users.php?title=users&list=add" class="button">添加管理员</a>';
 }
 ?>
 </div>
 <div class="pagination">
 <?php
-//仅cd_admin登录可以查看所有管理员
+//仅cd-admin登录可以查看所有管理员
 require_once ('./includes/mysql_connect.php');
-if ($_SESSION['USERNAME']=='cd_admin'){
+if ($_SESSION['USERNAME']=='cd-admin'){
 	$sql = 'SELECT ID, admin_name FROM `cd_admin`';
 }else{
 	$sql = 'SELECT ID, admin_name FROM `cd_admin` WHERE ID = '.$_SESSION['USERID'];
@@ -87,7 +87,7 @@ while ($row = mysql_fetch_assoc($result) and $j <= $records_per_page) {
 	echo '<tr>';
     echo '<td>' . htmlspecialchars($ID) . '</td>';
     echo '<td>' . htmlspecialchars($admin_name) . '</td>';
-	if ($_SESSION['USERNAME']=='cd_admin'){
+	if ($_SESSION['USERNAME']=='cd-admin'){
 		echo '<td style="text-align:right;padding-right:50px;">'.'<a href="edit_users.php?id='.$ID.'">修改密码</a>'.' <a href="transact_users.php?action=del&id='.$ID.'" onClick="return HTMerDel();">删除</a>'; 
 	}else{
 		echo '<td style="text-align:right;padding-right:80px;">'.'<a href="edit_users.php?id='.$ID.'">修改密码</a>'; 

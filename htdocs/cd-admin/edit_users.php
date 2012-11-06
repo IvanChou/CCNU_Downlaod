@@ -22,7 +22,7 @@ if (isset($_GET['id'])){
 <div class="content-box-content">
 <div class="tab-content default-tab"> <!-- This is the target div. id must match the href of this div's tab -->
 <?php
-//if ($_SESSION['USERNAME']=='cd_admin'){
+//if ($_SESSION['USERNAME']=='cd-admin'){
 //	$sql = 'SELECT * FROM `cd_admin`;';
 //} else{
 //	$sql = 'SELECT * FROM `cd_admin` WHERE ID = '.$_SESSION['USERID'];

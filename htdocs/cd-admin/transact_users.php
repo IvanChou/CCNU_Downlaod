@@ -31,7 +31,7 @@ if (isset($_REQUEST['action'])) {
     case 'del':
 	    session_start();
 		$ID = (isset($_GET['id'])) ? ($_GET['id']) : '';
-		if($_SESSION['USERNAME'] =='cd_admin'&& $ID != 1){
+		if($_SESSION['USERNAME'] =='cd-admin'&& $ID != 1){
 			$admin_ID = $ID;
 			DeleteUser($admin_ID);
 		} if( $ID ==1 ){
