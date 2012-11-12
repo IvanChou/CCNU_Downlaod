@@ -57,7 +57,7 @@ button {display: none;}
 .home_right ul li span {height: 26px;line-height: 26px;float: right;margin-right: 20px;}
 
 .banner{width: 960px;height: 114px;clear: both;}
-.banner img {width: 960;height: 90px;margin: 12px auto;}
+.banner img {width: 960px;height: 90px;margin: 12px auto;}
 
 .home_box {width: 232px;height: 305px;float: left;margin:0 1px;background: url(../images/idx_element.png) -25px -1px;}
 .home_box + .home_box{margin:0 0 0 10px;}
