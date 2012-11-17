@@ -9,38 +9,29 @@ class Home extends CI_Controller {
 		
 		$this->load->model('softs_model');
 		$this->load->model('tags_model');
+		$this->load->model('terms_model');
+		
+		$this->load->helper('number');
 	}
 
 	public function index()
 	{
 		$data['site_url'] = base_url();
 		
-		$query = array(//本周下载排汗
-										'select'=>'soft_name,down_count,soft_url',
-										'limit'	=>'10',
-										'where'	=>'post_time > "'.date('Y-m-d',strtotime('last monday')).'"',
-										'order'	=>'down_count desc'
-									);
-		$data['weekly'] = $this->softs_model->get_softs($query);
+		$side['terms'] = $this->terms_model->get_terms(TRUE);
+		$side['top20'] = $this->softs_model->get_top_softs(20);
 		
-		$query = array(//下载总排行
-										'select'=>'soft_name,soft_url',
-										'limit'	=>'10',
-										'order'	=>'down_count desc'
-									);
-		$data['total'] = $this->softs_model->get_softs($query);
-		
-		$query = array(//下载总排行
-										'select'=>'soft_name,soft_url',
-										'limit'	=>'10',
-										'order'	=>'down_count desc'
-									);
-		$data['total'] = $this->softs_model->get_softs($query);
-		
-		$data['hotag'] = $this->tags_model->get_tags_hot();
+		$data['theNew'] = $this->softs_model->get_softs(array("limit"=>"8"));
+		foreach ($data['theNew'] as $k => $v) {
+			$data['theNew'][$k]['post_time'] = date("Y/m/d",strtotime($v['post_time']));
+			$data['theNew'][$k]['soft_size'] = byte_format($v['soft_size']);
+		}
 		
 		//var_dump($data);
+		$this->load->view('header',$data);
+		$this->load->view('sider',$side);
 		$this->load->view('home',$data);
+		$this->load->view('footer');
 	}
 	
 }

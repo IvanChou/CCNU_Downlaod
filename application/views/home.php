@@ -1,113 +1,168 @@
-<!DOCTYPE html>
-<html dir="ltr" lang="zh-CN">
-<head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>华中师范大学下载中心</title>
-<link rel="stylesheet" href="<?=$site_url?>style/style.css" type="text/css" media="all">
-</head>
-<body>
-<!-- 页面头部 开始 -->
-  <header>
-    <h1 class="logo">华中师范大学下载中心</h1>
-    <nav>
-      <a href="#" id="home" class="current">首页</a>
-      <a href="#" id="categories">资源分类</a>
-      <a href="#" id="referrals">软件推介</a>
-      <a href="#" id="ranklist">排行榜</a>
-    </nav>
-  </header>
-<!-- 页面头部 结束 -->
+<div id="need">
+	<div class="shadow-box">
+		<h2>装机必备</h2>
+		<dl>
+			<dt>
+				系统工具
+			</dt>
+			<div class="trige">
+				&nbsp;
+			</div>
+			<dd></dd>
+		</dl>
+		<dl>
+			<dt>
+				安全杀毒
+			</dt>
+			<div class="trige">
+				&nbsp;
+			</div>
+			<dd>
 
-<!-- 首页末版 开始 -->
-  <div class="wrap">
-    <div class="scroll_images">
-      <img id="sol_img_1" class="current" src="<?=$site_url?>images/scroll.png" />
-      <img id="sol_img_2" src="<?=$site_url?>images/scroll.png" />
-      <img id="sol_img_3" src="<?=$site_url?>images/scroll.png" />
-    </div>
-    <div class="home_right">
-      <form>
-        <input type="text" id="search" name="search" placeholder="请输入你要查询的内容" />
-        <button type="button">搜索</button>
-      </form>
-      <h2>本周下载排行</h2>
-      <ul>
-      	<?php foreach($weekly as $k): ?>
-        <li><a href="<?=$k['soft_url']?>"><?=$k['soft_name']?></a><span><?=$k['down_count']?>次</span></li>
-        <?php endforeach; ?>
-      </ul>
-    </div>
-    <div class="banner"><img src="<?=$site_url?>images/banner.png" /></div>
-    <div class="home_box">
-      <h2>下载总排行</h2>
-      <ol>
-      	<?php foreach($total as $k): ?>
-        <li><a href="<?=$k['soft_url']?>"><?=$k['soft_name']?></a></li>
-        <?php endforeach; ?>
-      </ol>
-    </div>
-    <div class="home_box">
-      <h2>下载总排行</h2>
-      <ol>
-        <li><a href="#">360安全卫士</a></li>
-        <li><a href="#">360杀毒</a></li>
-        <li><a href="#">小红伞</a></li>
-        <li><a href="#">腾讯QQ</a></li>
-        <li><a href="#">快播影视</a></li>
-        <li><a href="#">百度影音</a></li>
-        <li><a href="#">腾讯电脑管家</a></li>
-        <li><a href="#">H3C客户端</a></li>
-        <li><a href="#">自由门</a></li>
-        <li><a href="#">Windows8_x64_msdn</a></li>  
-      </ol>
+			</dd>
+		</dl>
+		<dl class="current">
+			<dt>
+				下载工具
+			</dt>
+			<div class="trige">
+				&nbsp;
+			</div>
+			<dd>
+				<ul>
+					<li>
+						<img src="icon.jpg" alt="icon" />
+						<h4>一键GHOST 2012.0.12</h4>
+						<p>
+							只需要按一个键就能让电脑自动还原，很方便吧 。。。
+						</p>
+						<span class="size">16.68M</span>
+					</li>
+					<li>
+						<img src="icon.jpg" alt="icon" />
+						<h4>一键GHOST 2012.0.12</h4>
+						<p>
+							只需要按一个键就能让电脑自动还原，很方便吧 。。。
+						</p>
+						<span class="size">16.68M</span>
+					</li>
+					<li>
+						<img src="icon.jpg" alt="icon" />
+						<h4>一键GHOST 2012.0.12</h4>
+						<p>
+							只需要按一个键就能让电脑自动还原，很方便吧 。。。
+						</p>
+						<span class="size">16.68M</span>
+					</li>
+					<li>
+						<img src="icon.jpg" alt="icon" />
+						<h4>一键GHOST 2012.0.12</h4>
+						<p>
+							只需要按一个键就能让电脑自动还原，很方便吧 。。。
+						</p>
+						<span class="size">16.68M</span>
+					</li>
+					<li>
+						<img src="icon.jpg" alt="icon" />
+						<h4>一键GHOST 2012.0.12</h4>
+						<p>
+							只需要按一个键就能让电脑自动还原，很方便吧 。。。
+						</p>
+						<span class="size">16.68M</span>
+					</li>
+				</ul>
+			</dd>
+		</dl>
+		<dl>
+			<dt>
+				办公软件
+			</dt>
+			<div class="trige">
+				&nbsp;
+			</div>
+			<dd>
 
-    </div>
-    <div class="home_box">
-      <h2>下载总排行</h2>
-      <ol>
-        <li><a href="#">360安全卫士</a></li>
-        <li><a href="#">360杀毒</a></li>
-        <li><a href="#">小红伞</a></li>
-        <li><a href="#">腾讯QQ</a></li>
-        <li><a href="#">快播影视</a></li>
-        <li><a href="#">百度影音</a></li>
-        <li><a href="#">腾讯电脑管家</a></li>
-        <li><a href="#">H3C客户端</a></li>
-        <li><a href="#">自由门</a></li>
-        <li><a href="#">Windows8_x64_msdn</a></li>  
-      </ol>
-    </div>
-    <div class="home_box">
-      <h2>下载总排行</h2>
-      <ol>
-        <li><a href="#">360安全卫士</a></li>
-        <li><a href="#">360杀毒</a></li>
-        <li><a href="#">小红伞</a></li>
-        <li><a href="#">腾讯QQ</a></li>
-        <li><a href="#">快播影视</a></li>
-        <li><a href="#">百度影音</a></li>
-        <li><a href="#">腾讯电脑管家</a></li>
-        <li><a href="#">H3C客户端</a></li>
-        <li><a href="#">自由门</a></li>
-        <li><a href="#">Windows8_x64_msdn</a></li>  
-      </ol>
-    </div>
-    <div style="clear:both;"></div>
-    <div class="tags_box">
-      <h2>热门标签</h2>
-      <div class="tags">
-      	<?php foreach($hotag as $k): ?>
-        <a href="<?=$k['url']?>" class="<?=$k['class']?>"><?=$k['tag_name']?></a>
-        <?php endforeach; ?>
-      </div>
-    </div>
-  </div>
-<!-- 首页末版 结束 -->
+			</dd>
+		</dl>
+		<dl>
+			<dt>
+				视频软件
+			</dt>
+			<div class="trige">
+				&nbsp;
+			</div>
+			<dd>
 
-<!-- 页面脚部 开始 -->
-  <footer>
-    <p>华中师范大学网络与教育技术中心</p>
-    <p>CopyRight 2009-2012</p>
-  </footer>
-<!-- 页面脚部 结束 -->
-</body>
-</html>
+			</dd>
+		</dl>
+		<dl>
+			<dt>
+				聊天工具
+			</dt>
+			<div class="trige">
+				&nbsp;
+			</div>
+			<dd>
+
+			</dd>
+		</dl>
+	</div>
+	<div class="shadowplus">
+		&nbsp;
+	</div>
+</div>
+
+<div id="notice">
+	<div class="shadow-box">
+		<h2>信息公告栏</h2>
+		<p>
+			哟西，这里是系统公告栏，想放什么就放什么。纳尼，后台么有在这个功能？NND，加！这就去加，赶紧的。。。阿飞家阿三地方阿点分i阿和u对方更好采购v
+		</p>
+	</div>
+	<div class="shadow">
+		&nbsp;
+	</div>
+</div>
+
+<div id="often">
+	<div class="shadow-box">
+		<h2>常用软件</h2>
+		<ul>
+			<li><img src="icon.jpg" alt="H3C客户端" /><a href="#">H3C客户端</a>
+			</li>
+			<li><img src="icon.jpg" alt="H3C客户端" /><a href="#">H3C客户端</a>
+			</li>
+			<li><img src="icon.jpg" alt="H3C客户端" /><a href="#">H3C客户端</a>
+			</li>
+		</ul>
+	</div>
+	<div class="shadow">
+		&nbsp;
+	</div>
+</div>
+
+<div id="new" class="list">
+	<div class="shadow-box">
+		<h2>最新软件</h2>
+		<ul>
+			<?php foreach($theNew as $k): ?>
+			<li>
+				<img src="<?=$k['soft_img']?>" alt="<?=$k['soft_name']?>" />
+				<h4><?=$k['soft_name']?></h4>
+				<p>
+					<?=$k['soft_description']?>
+				</p>
+				<div class="brief-info">
+					<span class="date"><?=$k['post_time']?></span>
+					<span class="downs">下载次数：<?=$k['down_count']?></span>
+					<span class="size">大小：<?=$k['soft_size']?></span>
+				</div>
+			</li>
+			<?php endforeach; ?>
+		</ul>
+	</div>
+	<div class="dishadowplus">
+		&nbsp;
+	</div>
+</div>
+<!-- home.php end here -->

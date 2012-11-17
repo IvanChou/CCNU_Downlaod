@@ -6,31 +6,22 @@ class Tags_model extends CI_Model {
 		$this->load->database();
 	}
 	
-	public function get_tags_hot($num = 5)
+	public function get_tags($term,$param = FALSE)
 	{
-		$this->db->order_by('down_count','random');
-		$this->db->select('tag_id,tag_name,down_count');
+		if(! is_int($term = (int)$term)) return FALSE;
 		
-		$query = $this->db->get('tags');
+		$this->db->from('tags');
+		$this->db->where("tag_parent",$term);
+		$param['select'] && $this->db->select($param['select']);
+		$param['where'] && $this->db->where($param['where']);
+		$param['limit'] && $this->db->limit($param['limit']);
+		$param['order'] ? $this->db->order_by($param['order']) : $this->db->order_by("tag_rank");
+		
+		$query = $this->db->get();
 		$result = $query->result_array();
 		
-		foreach($result as $k=>$v){
-			$result[$k]['url'] = site_url("tag/".$v['tag_id']);
-			switch ((int)($v['down_count']/$num)){
-				case 1:
-					$result[$k]['class'] = 'hot';break;
-				case 2:
-					$result[$k]['class'] = 'hotter';break;
-				case 3:
-					$result[$k]['class'] = 'very_hot';break;
-				case 4:
-					$result[$k]['class'] = 'super_hot';break;
-				default:
-					$result[$k]['class'] = 'normal';
-			}
-		}
-		
-		return ($result);
+		return($result);
+
 	}
 	
 }
