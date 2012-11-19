@@ -1,12 +1,14 @@
 <div class="sider">
+	<?php if(! $map['term_id']): ?>
 	<div class="welcome">
 		欢迎您！某某
 	</div>
+	<?php endif ?>
 
 	<div id="category" class="shadow-box">
 		<h2>软件分类</h2>
 		<?php foreach($terms as $i=>$k): ?>
-		<dl <?php if($k['term_id']==$map['term_id'])echo 'class="current"' ?>>
+		<dl <?php if($map['term_id']?$k['term_id']==$map['term_id']:$i==0)echo 'class="current"' ?>>
 			<a href="<?=$k['term_url']?>">
 				<dt><?=$k['term_name']?></dt>
 			</a>
