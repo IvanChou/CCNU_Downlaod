@@ -14,19 +14,8 @@ class Softs_model extends CI_Model {
 	 * @return	Array
 	 */
 	public function get_softs($param = FALSE)
-	{
-		if($param === FALSE)
-		{
-			$query = $this->db->get('softs');
-			return $query->result_array();
-		}
-		
-		$this->db->from('softs');
-		$param['select'] && $this->db->select($param['select']);
-		$param['where'] && $this->db->where($param['where']);
-		$param['limit'] && $this->db->limit($param['limit']);
-		$param['order'] && $this->db->order_by($param['order']);
-		
+	{	
+		$this->_set_sql($param);
 		$query = $this->db->get();
 		$result = $query->result_array();
 		
@@ -37,6 +26,14 @@ class Softs_model extends CI_Model {
 		
 		return($result);
 
+	}
+	
+	public function get_softs_num($param = FALSE)
+	{
+		$this->_set_sql($param);
+		$query = $this->db->get();
+		$result = $query->num_rows();
+		return($result);
 	}
 	
 	/**
@@ -59,6 +56,16 @@ class Softs_model extends CI_Model {
 		$tag && $query['where'] = 'tag_id ='.$tag;
 		
 		return $this->get_softs($query);
+	}
+	
+	function _set_sql($param = array())
+	{	
+		$this->db->from('softs');
+		$param['select'] && $this->db->select($param['select']);
+		$param['where'] && $this->db->where($param['where']);
+		$param['limit'] && $this->db->limit($param['limit']);
+		$param['offset'] && $this->db->limit($param['limit'],$param['offset']);
+		$param['order'] && $this->db->order_by($param['order']);
 	}
 }
 	

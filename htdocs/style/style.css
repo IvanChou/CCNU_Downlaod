@@ -52,6 +52,7 @@ input#button {width: 55px;height: 23px;line-height: 23px;padding: 0;background: 
 #category .current dd {display: block;}
 
 #rank {width: 210px;}
+#rank ul {padding: 4px 0 8px;}
 #rank li {width: 176px;height: 24px;margin: 0 auto; border-bottom: 1px dashed #B6B6B6;line-height: 24px;background: url(../images/rank.png) 0 -1px no-repeat;}
 #rank li:last-child {border-bottom: 6px solid #FFFFFF;}
 #rank li span {width: 18px;height: 24px;font-size: 75%;text-align: center;display: inline-block;color: #FFFFFF;}

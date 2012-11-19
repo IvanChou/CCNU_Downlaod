@@ -13,11 +13,11 @@ class MY_Pagination extends CI_Pagination {
 		parent::initialize($params);
 		
 		if ($this->anchor_class != '')$this->anchor_class = '';
-		if ($this->first_class != '')$this->first_class = 'class="'.$this->first_class.'" ';
-		if ($this->last_class != '')$this->last_class = 'class="'.$this->last_class.'" ';
-		if ($this->prev_class != '')$this->prev_class = 'class="'.$this->prev_class.'" ';
-		if ($this->next_class != '')$this->next_class = 'class="'.$this->next_class.'" ';
-		if ($this->num_class != '')$this->num_class = 'class="'.$this->num_class.'" ';
+		if ($this->first_class != '' && ! strstr($this->first_class,"class="))$this->first_class = 'class="'.$this->first_class.'" ';
+		if ($this->last_class != '' && ! strstr($this->last_class,"class="))$this->last_class = 'class="'.$this->last_class.'" ';
+		if ($this->prev_class != '' && ! strstr($this->prev_class,"class="))$this->prev_class = 'class="'.$this->prev_class.'" ';
+		if ($this->next_class != '' && ! strstr($this->next_class,"class="))$this->next_class = 'class="'.$this->next_class.'" ';
+		if ($this->num_class != '' && ! strstr($this->num_class,"class="))$this->num_class = 'class="'.$this->num_class.'" ';
 	}
 	
 	function create_links()
