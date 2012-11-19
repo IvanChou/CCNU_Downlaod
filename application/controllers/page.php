@@ -15,22 +15,34 @@ class Page extends CI_Controller {
 
 	public function term($term = FALSE)
 	{
-		if(! $term) show_404();
+		$data['map'] = $this->terms_model->get_term_name($term);
+		$this->_get_list("term",$term,$data);
+	}
+
+	public function tag($tag = FALSE)
+	{
+		$data['map'] = $this->tags_model->get_tag_name($tag,TRUE);
+		$this->_get_list("tag",$tag,$data);
+	}
+
+	function _get_list($method,$param = FALSE,$data = FALSE)
+	{
+		if(! $param) show_404();
 		
 		$data['site_url'] = base_url();
 		
-		$query = array("where"=>"term_id = $term");
+		$query = array("where"=>$method."_id = $param");
 		
-		$config['base_url'] = site_url("page/term/$term");
+		$config['base_url'] = site_url("page/$method/$param");
 		$config['total_rows'] = $this->softs_model->get_softs_num($query);
 		$this->load->library('pagination');
 		$this->pagination->initialize($config); 
 
-		$side['terms'] = $this->terms_model->get_terms(TRUE);
-		$side['top20'] = $this->softs_model->get_top_softs(20);
+		$data['terms'] = $this->terms_model->get_terms(TRUE);
+		$data['top20'] = $this->softs_model->get_top_softs(20);
 		
 		$data['softs'] = $this->softs_model->get_softs(array(
-															"where"=>"term_id = $term",
+															"where"=>$method."_id = $param",
 															"limit"=>$this->pagination->per_page,
 															"offset"=>$this->uri->segment(4)
 															));
@@ -41,7 +53,7 @@ class Page extends CI_Controller {
 		
 		//var_dump($data);
 		$this->load->view('header',$data);
-		$this->load->view('sider',$side);
+		$this->load->view('sider',$data);
 		$this->load->view('page',$data);
 		$this->load->view('footer');
 	}
@@ -49,5 +61,5 @@ class Page extends CI_Controller {
 }
 
 
-/* End of file home.php */
-/* Location: ./application/controllers/home.php */
+/* End of file page.php */
+/* Location: ./application/controllers/page.php */

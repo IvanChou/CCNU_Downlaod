@@ -6,13 +6,13 @@
 	<div id="category" class="shadow-box">
 		<h2>软件分类</h2>
 		<?php foreach($terms as $i=>$k): ?>
-		<dl <?php if($i==0)echo 'class="current"' ?>>
-			<dt>
-				<?=$k['term_name']?>
-			</dt>
+		<dl <?php if($k['term_id']==$map['term_id'])echo 'class="current"' ?>>
+			<a href="<?=$k['term_url']?>">
+				<dt><?=$k['term_name']?></dt>
+			</a>
 			<dd>
 				<?php foreach($k['tags'] as $v): ?>
-				<a href="#"><?=$v['tag_name']?></a>
+				<a href="<?=$v['tag_url']?>"><?=$v['tag_name']?></a>
 				<?php endforeach; ?>
 			</dd>
 		</dl>

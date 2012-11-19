@@ -1,8 +1,8 @@
 <div id="softs" class="list">
 	<div class="shadow-box">
-		<h2>系统工具</h2>
+		<h2><?php echo $curnet = $map['tag_name']?$map['tag_name']:$map['term_name'] ?></h2>
 		<div class="addr">
-			首页 > 系统工具
+			首页 > <?=$map['term_name']?> <?php if($map['tag_name'])echo "> ".$map['tag_name'] ?>
 		</div>
 		<ul>
 			<?php foreach($softs as $k): ?>

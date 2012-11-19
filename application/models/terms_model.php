@@ -25,6 +25,10 @@ class Terms_model extends CI_Model {
 		$query = $this->db->get();
 		$result = $query->result_array();
 		
+		foreach ($result as $k => $v) {
+			$result[$k]['term_url'] = site_url("page/term/$v[term_id]");
+		}
+		
 		if($withTags === TRUE){
 			foreach($result as $k=>$v){
 				$result[$k]['tags'] = $this->tags_model->get_tags($v[term_id]);
@@ -32,6 +36,14 @@ class Terms_model extends CI_Model {
 		}
 		
 		return($result);
+	}
+	
+	public function get_term_name($value = FALSE)
+	{
+		$this->db->select('term_id,term_name');
+		$query = $this->db->get_where('terms',array('term_id' => $value));
+		$result = $query->row_array();
+		return $result;
 	}
 	
 }
