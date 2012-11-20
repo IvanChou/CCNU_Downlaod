@@ -12,7 +12,7 @@
 			&nbsp;
 		</div>
 		<div class="header">
-			<a href="#" class="logo" title="华中师范大学软件下载中心"><h1>华中师范大学软件下载中心</h1></a>
+			<a href="<?=$site_url ?>" class="logo" title="华中师范大学软件下载中心"><h1>华中师范大学软件下载中心</h1></a>
 			<hr />
 			<div id="search">
 				<input id="keywords" type="text" name="keywords" value="请输入搜索关键字" />

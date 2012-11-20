@@ -37,6 +37,9 @@ class Tags_model extends CI_Model {
 			$this->db->join('terms','tags.tag_parent=terms.term_id');
 			$query = $this->db->get();
 			$result = $query->row_array();
+			
+			$result['term_url'] = site_url("page/term/$result[term_id]");
+			
 			return $result;
 			
 		}

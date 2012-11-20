@@ -55,7 +55,7 @@ class Page extends CI_Controller {
 		$this->load->view('header',$data);
 		$this->load->view('sider',$data);
 		$this->load->view('page',$data);
-		$this->load->view('footer');
+		$this->load->view('footer',$data);
 	}
 	
 }

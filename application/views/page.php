@@ -2,7 +2,14 @@
 	<div class="shadow-box">
 		<h2><?php echo $curnet = $map['tag_name']?$map['tag_name']:$map['term_name'] ?></h2>
 		<div class="addr">
-			首页 > <?=$map['term_name']?> <?php if($map['tag_name'])echo "> ".$map['tag_name'] ?>
+			<a href="<?=$site_url ?>">首页</a> > 
+			<?php
+				if(! $map['tag_id']){
+					echo $map['term_name'];
+				}else{
+					echo "<a href=$map[term_url] >$map[term_name]</a> > $map[tag_name]";
+				}
+			?>
 		</div>
 		<ul>
 			<?php foreach($softs as $k): ?>
