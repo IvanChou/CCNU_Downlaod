@@ -14,8 +14,8 @@
 		<ul>
 			<?php foreach($softs as $k): ?>
 			<li>
-				<img src="<?=$k['soft_img']?>" alt="<?=$k['soft_name']?>" />
-				<h4><?=$k['soft_name']?></h4>
+				<a href="<?=$k['soft_page']?>"><img src="<?=$k['soft_img']?>" alt="<?=$k['soft_name']?>" /></a>
+				<a href="<?=$k['soft_page']?>"><h4><?=$k['soft_name']?></h4></a>
 				<p>
 					<?=$k['soft_description']?>
 				</p>
@@ -36,3 +36,4 @@
 		&nbsp;
 	</div>
 </div>
+<!-- page.php end here -->

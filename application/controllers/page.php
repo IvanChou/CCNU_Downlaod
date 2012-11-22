@@ -30,16 +30,14 @@ class Page extends CI_Controller {
 		if(! $param) show_404();
 		
 		$data['site_url'] = base_url();
+		$data['terms'] = $this->terms_model->get_terms(TRUE);
+		$data['top20'] = $this->softs_model->get_top_softs(20);
 		
 		$query = array("where"=>$method."_id = $param");
-		
 		$config['base_url'] = site_url("page/$method/$param");
 		$config['total_rows'] = $this->softs_model->get_softs_num($query);
 		$this->load->library('pagination');
 		$this->pagination->initialize($config); 
-
-		$data['terms'] = $this->terms_model->get_terms(TRUE);
-		$data['top20'] = $this->softs_model->get_top_softs(20);
 		
 		$data['softs'] = $this->softs_model->get_softs(array(
 															"where"=>$method."_id = $param",

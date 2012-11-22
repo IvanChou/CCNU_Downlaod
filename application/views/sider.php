@@ -29,7 +29,7 @@
 		<ul>
 			<?php foreach($top20 as $i=>$k): ?>
 			<li>
-				<span><?=($i+1)?></span><a href="#"><?=$k['soft_name']?></a>
+				<span><?=($i+1)?></span><a href="<?=$k['soft_page']?>"><?=$k['soft_name']?></a>
 			</li>
 			<?php endforeach; ?>
 		</ul>
