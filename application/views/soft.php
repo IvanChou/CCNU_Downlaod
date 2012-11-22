@@ -37,7 +37,7 @@
 		<p>
 			<?=$soft['soft_description']?>
 		</p>
-		<input type="button" value="Download"/>
+		<a class="button" href="<?=$soft['soft_down']?>">Download</a>
 	</div>
 	<div class="dishadowplus">
 		&nbsp;

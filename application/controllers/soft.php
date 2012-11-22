@@ -13,7 +13,7 @@ class Soft extends CI_Controller {
 		$this->load->model('terms_model');
 	}
 	
-	public function id($id = FALSE)
+	public function show($id = FALSE)
 	{
 		if(! $id) show_404();
 		$data['site_url'] = base_url();
@@ -31,6 +31,20 @@ class Soft extends CI_Controller {
 		$this->load->view('sider',$data);
 		$this->load->view('soft',$data);
 		$this->load->view('footer',$data);
+	}
+	
+	public function down($id = FALSE)
+	{
+		if(! $id) show_404();
+		
+		$query = array(
+						"where"=>"id = $id",
+						"select"=>"soft_url"
+						);
+		$soft = $this->softs_model->get_soft($query);
+		$soft['soft_url'] && $soft['soft_url'] = base_url().$soft['soft_url'];
+		
+		redirect($soft['soft_url'], 'location', 301);
 	}
 	
 }

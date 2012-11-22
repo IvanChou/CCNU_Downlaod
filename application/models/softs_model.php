@@ -20,7 +20,7 @@ class Softs_model extends CI_Model {
 		$result = $query->result_array();
 		
 		foreach($result as $k=>$v){
-			$v['ID'] && $result[$k]['soft_page'] = site_url("soft/id/$v[ID]");
+			$v['ID'] && $result[$k]['soft_page'] = site_url("soft/show/$v[ID]");
 			$v['soft_img'] && $result[$k]['soft_img'] = base_url().$v['soft_img'];
 		}
 		
@@ -63,14 +63,14 @@ class Softs_model extends CI_Model {
 		if(! $param) return FALSE;
 		
 		$this->_set_sql($param);
-		$this->db->select('softs.*,tag_name,term_name');
+		$param['select'] || $this->db->select('softs.*,tag_name,term_name');
 		$this->db->join('tags','softs.tag_id=tags.tag_id');
 		$this->db->join('terms','softs.term_id=terms.term_id');
 		
 		$query = $this->db->get();
 		$result = $query->row_array();
 		
-		$result['soft_url'] && $result['soft_url'] = base_url().$result['soft_url'];
+		$result['ID'] && $result['soft_down'] = site_url("soft/down/$result[ID]");
 		$result['soft_img'] && $result['soft_img'] = base_url().$result['soft_img'];
 		$result['term_id'] && $result['term_url'] = site_url("page/term/$result[term_id]");
 		$result['tag_id'] && $result['tag_url'] = site_url("page/tag/$result[tag_id]");
