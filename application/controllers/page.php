@@ -11,6 +11,8 @@ class Page extends CI_Controller {
 		$this->load->model('softs_model');
 		$this->load->model('tags_model');
 		$this->load->model('terms_model');
+		
+		$this->load->library('pagination');
 	}
 
 	public function term($term = FALSE)
@@ -36,7 +38,6 @@ class Page extends CI_Controller {
 		$query = array("where"=>$method."_id = $param");
 		$config['base_url'] = site_url("page/$method/$param");
 		$config['total_rows'] = $this->softs_model->get_softs_num($query);
-		$this->load->library('pagination');
 		$this->pagination->initialize($config); 
 		
 		$data['softs'] = $this->softs_model->get_softs(array(

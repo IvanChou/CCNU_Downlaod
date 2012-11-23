@@ -48,20 +48,19 @@
 	<div class="shadow-box">
 		<h3>用户评论</h3>
 		<ul>
+			<?php foreach($comments as $v): ?>
 			<li>
-				<span class="name">苏小里</span>
-				<span class="time">发表于 2012-11-07 13:30:29</span>
+				<span class="name"><?=$v['user_name']?></span>
+				<span class="time">发表于 <?=$v['com_time']?></span>
 				<p>
-					这个软件不靠谱啊 不靠谱啊 不靠谱=。= 真的不靠谱。这个软件不靠谱啊 不靠谱啊 不靠谱=。= 真的不靠谱。这个软件不靠谱啊 不靠谱啊 不靠谱=。= 真的不靠谱。这个软件不靠谱啊 不靠谱啊 不靠谱=。= 真的不靠谱。
+					<?=$v['com_text']?>
 				</p>
 			</li>
+			<?php endforeach ?>
 		</ul>
 
 		<div class="pages">
-			<a class="pre" href="#">上一页</a>
-			<a class="num current" href="#">1</a>
-			<a class="num" href="#">2</a>
-			<a class="next" href="#">下一页</a>
+			<?php echo $this->pagination->create_links(); ?>
 		</div>
 
 	</div>
@@ -73,7 +72,8 @@
 <div id="comment" class="soft">
 	<div class="shadow-box">
 		<h3>我来评论</h3>
-		<form action="#" method="post">
+		<form action="<?=site_url("soft/comment") ?>" method="post" accept-charset="utf-8">
+			<input type="hidden" name="soft-id" value="<?=$soft['ID']?>">
 			<label>发表评论</label>
 			<textarea name="content"></textarea>
 			<label>用户名</label>

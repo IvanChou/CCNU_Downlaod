@@ -2,7 +2,7 @@
 
 	$config['uri_segment'] 	= 4;
 	$config['per_page'] 	= 1; 
-	$config['cur_tag_open']	= '<a class="current num" href="javascript:void(0);">';
+	$config['cur_tag_open']	= ' <a class="current num" href="javascript:void(0);">';
 	$config['cur_tag_close']= '</a>';
 	$config['first_link']	= FALSE;
 	$config['last_link']	= FALSE;
