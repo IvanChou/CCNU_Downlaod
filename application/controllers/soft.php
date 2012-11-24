@@ -85,10 +85,17 @@ class Soft extends CI_Controller {
 	{
 		if(! $this->is_exist($id)) show_404();
 		$result = $this->dlogs_model->appraise($id,"like");
-		if($result){
-			echo "我代表软件感谢您！";
-		}else{
-			echo "你是没下载呢，还是支持过呢？表到处乱点嘛，当心有炸弹哦~";
+		
+		switch ($result) {
+			case '404':
+				echo "小平同志说：“实践是检验真理的唯一标准。” 所e还是把它Down下来看看再评价吧~";
+				break;
+			case 'repeat':
+				echo "你明明已经点过支持了的说，健忘了？还是瞎捣乱 =。=";
+				break;
+			default:
+				echo "我代表软件感谢您!";
+				break;
 		}
 	}
 	
@@ -96,10 +103,17 @@ class Soft extends CI_Controller {
 	{
 		if(! $this->is_exist($id)) show_404();
 		$result = $this->dlogs_model->appraise($id,"unlike");
-		if($result){
-			echo "少年，你点了反对耶，能给个理由吗？";
-		}else{
-			echo "你是没下载呢，还是反对过呢？表到处乱点嘛，当心有炸弹哦~";
+
+		switch ($result) {
+			case '404':
+				echo "怎么可以 o_O~ 你都还没下载就给差评，小心被寄寿衣啊!";
+				break;
+			case 'repeat':
+				echo "呃，呃，它跟你有深仇大恨吗？你已经反对过它了哦";
+				break;
+			default:
+				echo "少年，你点了反对耶，我觉得我们得一起喝喝茶了~";
+				break;
 		}
 	}
 	

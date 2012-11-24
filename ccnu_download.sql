@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: localhost
--- Generation Time: Nov 19, 2012 at 09:40 PM
+-- Generation Time: Nov 24, 2012 at 02:55 PM
 -- Server version: 5.5.28-0ubuntu0.12.10.1
 -- PHP Version: 5.4.6-1ubuntu1
 
@@ -47,22 +47,61 @@ INSERT INTO `cd_admin` (`ID`, `admin_name`, `admin_pass`) VALUES
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `cd_comments`
+--
+
+CREATE TABLE IF NOT EXISTS `cd_comments` (
+  `com_id` bigint(6) unsigned NOT NULL AUTO_INCREMENT,
+  `user_num` bigint(8) unsigned DEFAULT NULL,
+  `user_name` varchar(12) CHARACTER SET utf8 NOT NULL,
+  `com_time` datetime NOT NULL DEFAULT '0000-00-00 00:00:00',
+  `com_text` text CHARACTER SET utf8 NOT NULL,
+  `soft_id` bigint(6) unsigned NOT NULL,
+  PRIMARY KEY (`com_id`),
+  KEY `FK_soft_ids` (`soft_id`)
+) ENGINE=InnoDB  DEFAULT CHARSET=armscii8 AUTO_INCREMENT=10 ;
+
+--
+-- Dumping data for table `cd_comments`
+--
+
+INSERT INTO `cd_comments` (`com_id`, `user_num`, `user_name`, `com_time`, `com_text`, `soft_id`) VALUES
+(1, 2009213663, '周艺', '2012-11-23 18:03:44', '我不想说 什么有不想说 我觉得自己没意义 或者', 40),
+(2, 2009213640, '小胖', '2012-11-23 18:44:38', '1L 是SB', 40),
+(3, 2009213663, '猪猪侠', '0000-00-00 00:00:00', '猪猪侠无敌 猪猪侠威武 猪猪侠爱打广告', 40),
+(4, 2009213663, '斯蒂芬', '0000-00-00 00:00:00', '最复杂的斯蒂芬', 40),
+(7, 2009213663, '时间仔', '2012-11-24 02:50:11', '看看时间对不对', 40),
+(8, 2009213663, '我是酱油瓶', '2012-11-24 02:31:24', '我可以留言吗 可以吗？', 40),
+(9, 2009213663, '胡一刀', '2012-11-24 02:46:13', '抢个沙发~', 41);
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `cd_downlog`
 --
 
 CREATE TABLE IF NOT EXISTS `cd_downlog` (
   `ID` bigint(6) unsigned NOT NULL AUTO_INCREMENT,
   `downer_ip` char(16) NOT NULL DEFAULT '000.000.000.000',
-  `down_time` datetime NOT NULL DEFAULT '0000-00-00 00:00:00',
+  `down_time` datetime DEFAULT '0000-00-00 00:00:00',
   `down_soft` bigint(6) unsigned NOT NULL,
+  `downer_bs` varchar(20) NOT NULL,
   `downer_os` varchar(20) NOT NULL,
-  `down_speed` int(6) unsigned NOT NULL COMMENT '单位:KB/s',
+  `down_speed` int(6) unsigned DEFAULT NULL COMMENT '单位:KB/s',
   `soft_appraise` tinyint(1) NOT NULL DEFAULT '0' COMMENT '踩:-1 缺省:0 顶:1',
   `soft_viru` tinyint(1) unsigned NOT NULL DEFAULT '0' COMMENT '举报有毒:1 缺省:0',
   `soft_null` tinyint(1) unsigned NOT NULL DEFAULT '0' COMMENT '举报无效:1 缺省:0',
   PRIMARY KEY (`ID`),
   KEY `down_soft` (`down_soft`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=27 ;
+
+--
+-- Dumping data for table `cd_downlog`
+--
+
+INSERT INTO `cd_downlog` (`ID`, `downer_ip`, `down_time`, `down_soft`, `downer_bs`, `downer_os`, `down_speed`, `soft_appraise`, `soft_viru`, `soft_null`) VALUES
+(1, '127.0.0.1', '0000-00-00 00:00:00', 40, 'Chrome', 'Linux', NULL, 0, 0, 0),
+(26, '127.0.0.1', '2012-11-24 01:57:15', 40, 'Chrome', 'Linux', NULL, 1, 0, 0);
 
 -- --------------------------------------------------------
 
@@ -96,7 +135,7 @@ CREATE TABLE IF NOT EXISTS `cd_softs` (
 --
 
 INSERT INTO `cd_softs` (`ID`, `soft_name`, `soft_url`, `term_id`, `tag_id`, `post_time`, `soft_description`, `soft_size`, `soft_os`, `soft_img`, `down_count`, `downer_top_count`, `downer_down_count`, `downer_viru_count`, `downer_null_count`) VALUES
-(40, '一键Ghost', 'cd-resource/53/20121117151347_9565.zip', 53, 213, '2012-11-17 15:13:47', '<span style="font-family: 微软雅黑, Tahoma, Arial, sans-serif; font-size: small; line-height: 19px; text-indent: 24px; background-color: rgb(255, 255, 255);">一键还原精灵，是一款傻瓜式的系统备份和还原工具。它具有安全、快速、保密性强、压缩率高、兼容性好等特点，特别适合电脑新手和担心操作麻烦的人使用。</span>', 254688, 'win', 'cd-resource/53/20121117151347_9565.jpg', 0, 0, 0, 0, 0),
+(40, '一键Ghost', 'cd-resource/53/20121117151347_9565.zip', 53, 213, '2012-11-17 15:13:47', '一键还原精灵，是一款傻瓜式的系统备份和还原工具。它具有安全、快速、保密性强、压缩率高、兼容性好等特点，特别适合电脑新手和担心操作麻烦的人使用。', 254688, 'win', 'cd-resource/53/20121117151347_9565.jpg', 13, 9, 7, 0, 0),
 (41, '驱动精灵2012 SP5 6.1.1018 官方版', 'cd-resource/53/20121117152459_4446.zip', 53, 213, '2012-11-17 15:24:59', '<span style="color: rgb(119, 119, 119); font-family: 宋体; font-size: 12px; line-height: 24px; background-color: rgb(255, 255, 255);">驱动精灵2012官方版革命性的新增了硬件设备问题判别的功能与相应算法，驱动精灵2012官方版幅增强了硬件识别能力，本站提供驱动精灵2012官网下载。</span>', 254688, 'win', 'cd-resource/53/20121117152459_4446.jpg', 0, 0, 0, 0, 0),
 (42, 'Windows优化大师 免费版 7.99 官方正式版', 'cd-resource/53/20121117152638_2663.zip', 53, 198, '2012-11-17 15:26:38', '<span style="color: rgb(119, 119, 119); font-family: 宋体; font-size: 12px; line-height: 22px; background-color: rgb(255, 255, 255);">Windows优化大师是功能强大的Windows系统优化辅助软件，Windows优化大师提供全面有效且简便安全的系统优化，本站提供优化大师免费下载、优化大师官方下载。</span>', 254688, 'win', 'cd-resource/53/20121117152638_2663.png', 0, 0, 0, 0, 0);
 
@@ -135,7 +174,7 @@ INSERT INTO `cd_tags` (`tag_id`, `tag_name`, `tag_rank`, `tag_parent`, `down_cou
 (207, '校园网客户端', 1, 57, 0),
 (208, '修电脑的', 3, 53, 7),
 (209, 'windows', 1, 58, 0),
-(213, '装电脑的', 1, 53, 0),
+(213, '装电脑的', 1, 53, 6),
 (214, '瞎折腾的', 4, 53, 0);
 
 -- --------------------------------------------------------
@@ -159,7 +198,7 @@ CREATE TABLE IF NOT EXISTS `cd_terms` (
 INSERT INTO `cd_terms` (`term_id`, `term_name`, `term_rank`, `down_count`) VALUES
 (49, '聊天工具', 7, 5),
 (52, '学习天地', 2, 0),
-(53, '系统工具', 1, 19),
+(53, '系统工具', 1, 23),
 (55, '网络安全', 4, 0),
 (56, '媒体工具', 6, 1),
 (57, '驱动下载', 3, 0),
@@ -168,6 +207,12 @@ INSERT INTO `cd_terms` (`term_id`, `term_name`, `term_rank`, `down_count`) VALUE
 --
 -- Constraints for dumped tables
 --
+
+--
+-- Constraints for table `cd_comments`
+--
+ALTER TABLE `cd_comments`
+  ADD CONSTRAINT `FK_soft_ids` FOREIGN KEY (`soft_id`) REFERENCES `cd_softs` (`ID`);
 
 --
 -- Constraints for table `cd_downlog`

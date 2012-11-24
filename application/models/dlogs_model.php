@@ -33,21 +33,40 @@ class Dlogs_model extends CI_Model {
 		if(! $id) return FALSE;
 		
 		$method = $method=="like" ? 1 : -1;
-		$field = $method==1 ? "downer_top_count" : "downer_down_count";
-		$this->db->limit("1");
+		$field_add = $method==1 ? "downer_top_count" : "downer_down_count";
+		$field_mus = $field_add=="downer_top_count" ? "downer_down_count" : "downer_top_count";
+		
 		$this->db->order_by("ID", "desc");
 		$this->db->where(array("downer_ip"=>$_SERVER['REMOTE_ADDR'],"down_soft"=>$id));
-		$this->db->update('downlog', array('soft_appraise'=>$method));
+		$query = $this->db->get('downlog');
+		$result = $query->row_array();
 		
-		if($this->db->affected_rows() == 0) return FALSE;
-		
-		$this->db->where('ID',$id);
-		$this->db->set($field,"$field+1",FALSE);
-		$this->db->update('softs');
-		
-		return TRUE;
+		switch ($result['soft_appraise']) {
+			case NUll :
+				return "404";
+				break;
+			case '0':
+				$this->db->update('downlog',array('soft_appraise'=>$method),"ID = $result[ID]");
+				$this->_up_into_soft($id,$field_add,"+1");
+				break;
+			case $method :
+				return "repeat";
+				break;
+			default:
+				$this->db->update('downlog',array('soft_appraise'=>$method),"ID = $result[ID]");
+				$this->_up_into_soft($id,$field_mus,"-1");
+				$this->_up_into_soft($id,$field_add,"+1");
+				break;
+		}
+		return "succeed";
 	}
 	
+	function _up_into_soft($id,$field,$method)
+	{
+		$this->db->where('ID',$id);
+		$this->db->set($field,"$field $method",FALSE);
+		$this->db->update('softs');
+	}	
 
 }
 	
