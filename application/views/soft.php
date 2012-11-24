@@ -72,14 +72,14 @@
 <div id="comment" class="soft">
 	<div class="shadow-box">
 		<h3>我来评论</h3>
-		<form action="<?=site_url("soft/comment") ?>" method="post" accept-charset="utf-8">
+		<form action="<?=site_url("soft/comment")?>" method="post" accept-charset="utf-8">
 			<input type="hidden" name="soft-id" value="<?=$soft['ID']?>">
 			<label>发表评论</label>
 			<textarea name="content"></textarea>
 			<label>用户名</label>
 			<input type="text" name="name" />
-			<a href="#" class="agree">支持</a>
-			<a href="#" class="disagree">反对</a>
+			<a href="<?=site_url("soft/like/$soft[ID]")?>" class="agree">支持</a>
+			<a href="<?=site_url("soft/unlike/$soft[ID]")?>" class="disagree">反对</a>
 			<input type="submit" value="提	交"/>
 		</form>
 

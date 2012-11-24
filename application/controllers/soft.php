@@ -76,8 +76,31 @@ class Soft extends CI_Controller {
 			echo validation_errors();
 		} else {
 			$this->comments_model->add_comment($_REQUEST);
+			echo "OK!评论原来如此轻松~";
 		}
 		
+	}
+	
+	public function like($id = FALSE)
+	{
+		if(! $this->is_exist($id)) show_404();
+		$result = $this->dlogs_model->appraise($id,"like");
+		if($result){
+			echo "我代表软件感谢您！";
+		}else{
+			echo "你是没下载呢，还是支持过呢？表到处乱点嘛，当心有炸弹哦~";
+		}
+	}
+	
+	public function unlike($id = FALSE)
+	{
+		if(! $this->is_exist($id)) show_404();
+		$result = $this->dlogs_model->appraise($id,"unlike");
+		if($result){
+			echo "少年，你点了反对耶，能给个理由吗？";
+		}else{
+			echo "你是没下载呢，还是反对过呢？表到处乱点嘛，当心有炸弹哦~";
+		}
 	}
 	
 	function is_exist($id,$is_form=FALSE)
