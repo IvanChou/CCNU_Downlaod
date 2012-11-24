@@ -22,6 +22,9 @@ class Softs_model extends CI_Model {
 		foreach($result as $k=>$v){
 			$v['ID'] && $result[$k]['soft_page'] = site_url("soft/show/$v[ID]");
 			$v['soft_img'] && $result[$k]['soft_img'] = base_url().$v['soft_img'];
+			$v['soft_description'] && $result[$k]['soft_description'] = strip_tags($v['soft_description']);
+			$v['soft_size'] && $result[$k]['soft_size'] = byte_format($v['soft_size']);
+			$v['post_time'] && $result[$k]['post_time'] = date("Y/m/d",strtotime($v['post_time']));
 		}
 		
 		return($result);
@@ -72,6 +75,8 @@ class Softs_model extends CI_Model {
 		
 		$result['ID'] && $result['soft_down'] = site_url("soft/down/$result[ID]");
 		$result['soft_img'] && $result['soft_img'] = base_url().$result['soft_img'];
+		$result['soft_size'] && $result['soft_size'] = byte_format($result['soft_size']);
+		$result['post_time'] = date("Y年m月d日",strtotime($result['post_time']));
 		$result['term_id'] && $result['term_url'] = site_url("page/term/$result[term_id]");
 		$result['tag_id'] && $result['tag_url'] = site_url("page/tag/$result[tag_id]");
 		
@@ -83,6 +88,7 @@ class Softs_model extends CI_Model {
 		$this->db->from('softs');
 		$param['select'] && $this->db->select($param['select']);
 		$param['where'] && $this->db->where($param['where']);
+		$param['where_ids'] && $this->db->where_in('ID',$param['where_in']);
 		$param['limit'] && $this->db->limit($param['limit']);
 		$param['offset'] && $this->db->limit($param['limit'],$param['offset']);
 		$param['order'] && $this->db->order_by($param['order']);

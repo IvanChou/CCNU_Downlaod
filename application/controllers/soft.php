@@ -23,15 +23,12 @@ class Soft extends CI_Controller {
 	public function show($id = FALSE)
 	{
 		if(! $this->is_exist($id)) show_404();
+		
 		$data['site_url'] = base_url();
 		$data['terms'] = $this->terms_model->get_terms(TRUE);
 		$data['top20'] = $this->softs_model->get_top_softs(20);
 		
-		$query = array("where"=>"id = $id");
-		$data['soft'] = $this->softs_model->get_soft($query);
-		
-		$data['soft']['soft_size'] = byte_format($data['soft']['soft_size']);
-		$data['soft']['post_time'] = date("Y年m月d日",strtotime($data['soft']['post_time']));
+		$data['soft'] = $this->softs_model->get_soft(array("where"=>"id = $id"));
 		
 		$config['base_url'] = site_url("soft/show/$id");
 		$config['total_rows'] = count($this->comments_model->get_comments($id));
@@ -57,10 +54,12 @@ class Soft extends CI_Controller {
 						);
 		$soft = $this->softs_model->get_soft($query);
 		
-		($extend = pathinfo($soft['soft_url'])) && ($extend = $extend['extension']);
+		$x = explode('.', $soft['soft_url']);
+		$extend = end($x);
 		$name = $soft['soft_name'].'.'.$extend;
 		$file = file_get_contents($soft['soft_url']);
 		
+		$this->output->set_content_type('text/html');
 		force_download($name, $file);
 	}
 	

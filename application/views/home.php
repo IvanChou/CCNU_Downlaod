@@ -1,111 +1,30 @@
 <div id="need">
 	<div class="shadow-box">
 		<h2>装机必备</h2>
-		<dl>
+		<?php foreach($need_title as $k=>$title): ?>
+		<dl <?php if($k==0) echo 'class="current"'; ?>>
 			<dt>
-				系统工具
-			</dt>
-			<div class="trige">
-				&nbsp;
-			</div>
-			<dd></dd>
-		</dl>
-		<dl>
-			<dt>
-				安全杀毒
-			</dt>
-			<div class="trige">
-				&nbsp;
-			</div>
-			<dd>
-
-			</dd>
-		</dl>
-		<dl class="current">
-			<dt>
-				下载工具
+				<?=$title?>
 			</dt>
 			<div class="trige">
 				&nbsp;
 			</div>
 			<dd>
 				<ul>
+					<?php foreach($need[$k] as $v): ?>
 					<li>
-						<img src="icon.jpg" alt="icon" />
-						<h4>一键GHOST 2012.0.12</h4>
+						<img src="<?=$v['soft_img']?>" alt="<?=$v['soft_name']?>" />
+						<a href="<?=$v['soft_page']?>"><h4><?=$v['soft_name']?></h4></a>
 						<p>
-							只需要按一个键就能让电脑自动还原，很方便吧 。。。
+							<?=($v['soft_description'])?>
 						</p>
-						<span class="size">16.68M</span>
+						<span class="size"><?=$v['soft_size']?></span>
 					</li>
-					<li>
-						<img src="icon.jpg" alt="icon" />
-						<h4>一键GHOST 2012.0.12</h4>
-						<p>
-							只需要按一个键就能让电脑自动还原，很方便吧 。。。
-						</p>
-						<span class="size">16.68M</span>
-					</li>
-					<li>
-						<img src="icon.jpg" alt="icon" />
-						<h4>一键GHOST 2012.0.12</h4>
-						<p>
-							只需要按一个键就能让电脑自动还原，很方便吧 。。。
-						</p>
-						<span class="size">16.68M</span>
-					</li>
-					<li>
-						<img src="icon.jpg" alt="icon" />
-						<h4>一键GHOST 2012.0.12</h4>
-						<p>
-							只需要按一个键就能让电脑自动还原，很方便吧 。。。
-						</p>
-						<span class="size">16.68M</span>
-					</li>
-					<li>
-						<img src="icon.jpg" alt="icon" />
-						<h4>一键GHOST 2012.0.12</h4>
-						<p>
-							只需要按一个键就能让电脑自动还原，很方便吧 。。。
-						</p>
-						<span class="size">16.68M</span>
-					</li>
+					<?php endforeach; ?>
 				</ul>
 			</dd>
 		</dl>
-		<dl>
-			<dt>
-				办公软件
-			</dt>
-			<div class="trige">
-				&nbsp;
-			</div>
-			<dd>
-
-			</dd>
-		</dl>
-		<dl>
-			<dt>
-				视频软件
-			</dt>
-			<div class="trige">
-				&nbsp;
-			</div>
-			<dd>
-
-			</dd>
-		</dl>
-		<dl>
-			<dt>
-				聊天工具
-			</dt>
-			<div class="trige">
-				&nbsp;
-			</div>
-			<dd>
-
-			</dd>
-		</dl>
+		<?php endforeach; ?>
 	</div>
 	<div class="shadowplus">
 		&nbsp;
@@ -116,7 +35,7 @@
 	<div class="shadow-box">
 		<h2>信息公告栏</h2>
 		<p>
-			哟西，这里是系统公告栏，想放什么就放什么。纳尼，后台么有在这个功能？NND，加！这就去加，赶紧的。。。阿飞家阿三地方阿点分i阿和u对方更好采购v
+			<?=$notice?>
 		</p>
 	</div>
 	<div class="shadow">
@@ -128,12 +47,11 @@
 	<div class="shadow-box">
 		<h2>常用软件</h2>
 		<ul>
-			<li><img src="icon.jpg" alt="H3C客户端" /><a href="#">H3C客户端</a>
+			<?php foreach($often as $k): ?>
+			<li>
+				<img src="<?=$k['soft_img']?>" alt="<?=$k['soft_name']?>" /><a href="<?=$k['soft_page']?>"><?=$k['soft_name']?></a>
 			</li>
-			<li><img src="icon.jpg" alt="H3C客户端" /><a href="#">H3C客户端</a>
-			</li>
-			<li><img src="icon.jpg" alt="H3C客户端" /><a href="#">H3C客户端</a>
-			</li>
+			<?php endforeach; ?>
 		</ul>
 	</div>
 	<div class="shadow">

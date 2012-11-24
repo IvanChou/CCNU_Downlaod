@@ -8,6 +8,15 @@
 
 (function(window, document, $, undefined){
 	
+	function show_needs () {
+		$("#need").find("dl").hover(
+			function() {
+			  $("#need").find("dl").removeClass('current');
+			  $(this).addClass('current');
+			}
+		)
+	}
+	
 	function set_footer () {
 		var window_height = window.innerHeight;
 		var body_height = document.body.clientHeight;
@@ -19,6 +28,7 @@
 	
 	$(document).ready(function(){
 		set_footer();
+		show_needs();
 	})
 	
 }(window,document,jQuery))

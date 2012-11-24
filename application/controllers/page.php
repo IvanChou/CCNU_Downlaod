@@ -45,10 +45,6 @@ class Page extends CI_Controller {
 															"limit"=>$this->pagination->per_page,
 															"offset"=>$this->uri->segment(4)
 															));
-		foreach ($data['softs'] as $k => $v) {
-			$data['softs'][$k]['post_time'] = date("Y/m/d",strtotime($v['post_time']));
-			$data['softs'][$k]['soft_size'] = byte_format($v['soft_size']);
-		}
 		
 		//var_dump($data);
 		$this->load->view('header',$data);

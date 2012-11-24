@@ -10,6 +10,7 @@ class Home extends CI_Controller {
 		$this->load->model('softs_model');
 		$this->load->model('tags_model');
 		$this->load->model('terms_model');
+		$this->load->model('home_model');
 		
 		$this->load->helper('number');
 	}
@@ -20,12 +21,13 @@ class Home extends CI_Controller {
 		
 		$side['terms'] = $this->terms_model->get_terms(TRUE);
 		$side['top20'] = $this->softs_model->get_top_softs(20);
+
+		$data_need = array_combine(array('need_title','need'),$this->home_model->get_need());
+		$data = array_merge($data,$data_need);
+		$data['notice'] = $this->home_model->get_notice();
+		$data['often']	= $this->home_model->get_often();
 		
 		$data['theNew'] = $this->softs_model->get_softs(array("limit"=>"8"));
-		foreach ($data['theNew'] as $k => $v) {
-			$data['theNew'][$k]['post_time'] = date("Y/m/d",strtotime($v['post_time']));
-			$data['theNew'][$k]['soft_size'] = byte_format($v['soft_size']);
-		}
 		
 		//var_dump($data);
 		$this->load->view('header',$data);
