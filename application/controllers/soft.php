@@ -34,7 +34,7 @@ class Soft extends CI_Controller {
 		$config['total_rows'] = count($this->comments_model->get_comments($id));
 		$this->pagination->initialize($config); 
 		
-		$data['comments'] = $this->comments_model->get_comments($id,$this->pagination->per_page,$this->uri->segment(4));
+		$data['comments'] = $this->comments_model->get_comments($id,$this->pagination->per_page,$this->uri->segment($this->pagination->uri_segment));
 		
 		$this->load->view('header',$data);
 		$this->load->view('sider',$data);

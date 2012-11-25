@@ -89,6 +89,7 @@ class Softs_model extends CI_Model {
 		$param['select'] && $this->db->select($param['select']);
 		$param['where'] && $this->db->where($param['where']);
 		$param['where_ids'] && $this->db->where_in('ID',$param['where_in']);
+		$param['like'] && $this->db->like('soft_name',$param['like']);
 		$param['limit'] && $this->db->limit($param['limit']);
 		$param['offset'] && $this->db->limit($param['limit'],$param['offset']);
 		$param['order'] && $this->db->order_by($param['order']);

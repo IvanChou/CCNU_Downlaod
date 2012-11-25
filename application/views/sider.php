@@ -1,5 +1,5 @@
 <div class="sider">
-	<?php if(! ($map['term_id'] || $soft)): ?>
+	<?php if(! ($map['term_name'] || $soft)): ?>
 	<div class="welcome">
 		欢迎您！某某
 	</div>

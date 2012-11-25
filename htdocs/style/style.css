@@ -20,6 +20,8 @@ img {border: none;}
 ul,ol,li {list-style: none;padding: 0;margin: 0;}
 li:last-child {border-bottom: none!important;}
 dl,dt,dd,h1,h2,h3,p {margin: 0;}
+input:focus,textarea:focus {outline-color: #009B34;}
+
 h1 {display: none;}
 h2 {height: 38px;background: url(../images/cubic.png) no-repeat left center;border-bottom: 1px solid #009944;text-indent: 16px;line-height: 38px;font-weight: bold;font-size: 130%;color: #009944;}
 h3 {height: 28px;line-height: 28px;text-indent: 28px;background: -moz-linear-gradient(top,#f6f6f6,#dcdcdc);background:-webkit-linear-gradient(top,#f6f6f6,#dcdcdc);background: -o-linear-gradient(top,#f6f6f6,#dcdcdc);filter: progid:DXImageTransform.Microsoft.gradient(GradientType=0, startColorstr=#f6f6f6, endColorstr=#dcdcdc);}
@@ -32,7 +34,7 @@ h4 {margin: 4px 0;}
 .header hr {width: 690px;margin: 8px 0 0 0;border: 2px solid #F4F4F4;float: left;}
 #search {width: 246px;height: 23px;padding: 3px 0;margin-top: -17px;background: url(../images/cd-icon.png) -64px -159px;float: left;}
 input#keywords {line-height: 23px;height: 23px;width: 135px;margin: 0 1px 0 35px;padding: 0 8px;border: none;background: #B7E0C6;display: block;float: left;}
-input#button {width: 55px;height: 23px;line-height: 23px;padding: 0;background: url(../images/cd-icon.png) -310px -162px;border: none;color: #DEE6DF;font-size: 105%;text-shadow: 1px 1px 2px #111;display: block;}
+input#button {width: 55px;height: 23px;line-height: 23px;padding: 0;background: url(../images/cd-icon.png) -310px -162px;border: none;color: #DEE6DF;font-size: 105%;text-shadow: 1px 1px 2px #111;display: block;cursor: pointer;}
 /* header defines end*/
 
 /* wrapper defines begin*/
@@ -84,11 +86,11 @@ input#button {width: 55px;height: 23px;line-height: 23px;padding: 0;background: 
 #often {width: 220px;height: 220px;float: left;}
 #often .shadow-box {width: 210px;}
 #often ul {width: 190px;height: 162px;padding: 4px 10px 5px}
-#often li,#often li:hover {width: 186px;height: 44px;margin: 8px 2px;background: url(../images/often-hover.png) no-repeat;}
-#often li+li {background: url(../images/often.png) no-repeat;}
+#often li {width: 186px;height: 44px;margin: 8px 2px;background: url(../images/often.png) no-repeat;}
+#often li.first,#often li:hover {background: url(../images/often-hover.png) no-repeat;}
 #often li img {margin: 6px 8px;height: 32px;width: 32px;float: left;}
 #often li a {height: 32px;padding: 6px 10px;line-height: 32px;display: block;overflow: hidden;}
-#often li:first-child a,#often li:hover a {color: #FFFFFF;}
+#often li.first a,#often li:hover a {color: #FFFFFF;}
 /* ---- home defines end*/
 	
 /* ---- list defines start*/

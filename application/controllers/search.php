@@ -1,6 +1,6 @@
 <?php 
 
-class Page extends CI_Controller {
+class Search extends CI_Controller {
 
 	public function __construct()
 	{
@@ -15,29 +15,21 @@ class Page extends CI_Controller {
 		$this->load->library('pagination');
 	}
 
-	public function term($term = FALSE)
+	public function index($str = FALSE)
 	{
-		$data['map'] = $this->terms_model->get_term_name($term);
-		$this->_get_list("term",$term,$data);
-	}
-
-	public function tag($tag = FALSE)
-	{
-		$data['map'] = $this->tags_model->get_tag_name($tag,TRUE);
-		$this->_get_list("tag",$tag,$data);
-	}
-
-	function _get_list($method,$param = FALSE,$data = FALSE)
-	{
-		if(! $param) show_404();
+		$str = urldecode($str);
+		$data['map']['term_name'] = "关于 $str 的搜索结果";
+		
+		if(! $str) show_404();
 		
 		$data['site_url'] = base_url();
 		$data['terms'] = $this->terms_model->get_terms(TRUE);
 		$data['top20'] = $this->softs_model->get_top_softs(20);
 		
-		$query = array("where"=>$method."_id = $param");
-		$config['base_url'] = site_url("page/$method/$param");
+		$query = array("like"=>$str);
+		$config['base_url'] = site_url("search/$str");
 		$config['total_rows'] = $this->softs_model->get_softs_num($query);
+		$config['uri_segment'] 	= 3;
 		$this->pagination->initialize($config); 
 		
 		$query['limit'] = $this->pagination->per_page;
@@ -49,10 +41,9 @@ class Page extends CI_Controller {
 		$this->load->view('sider',$data);
 		$this->load->view('page',$data);
 		$this->load->view('footer',$data);
-	}
-	
+	}	
 }
 
 
-/* End of file page.php */
-/* Location: ./application/controllers/page.php */
+/* End of file search.php */
+/* Location: ./application/controllers/search.php */
