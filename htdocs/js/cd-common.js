@@ -22,10 +22,14 @@
 			$(this).val() == "" && $(this).val(str_1);
 		});
 		
+		$("#keywords").keyup(function(){
+        	if(event.keyCode == 13) $("#button").click();
+        });
+		
 		$("#button").click(function() {
 			key = $("#keywords").val();
 			if(key == str_1 || key == str_2) key = "";
-			key && (url = "http://"+window.location.host+"/search/"+key);
+			key && (url = "http://"+window.location.host+"/index.php/search/"+key);
 			if(url){
 				window.location.href = url;
 			}else{
