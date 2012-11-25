@@ -126,7 +126,7 @@ input#button {width: 55px;height: 23px;line-height: 23px;padding: 0;background: 
 .shadow-box {margin: 0 5px;background: #ffffff;box-shadow: 0px 0px 6px #797575;position: relative;}
 .clear {clear: both;height: 0;}
 
-.list,.soft {width: 730px;float: left;}
+.list,.soft {width: 730px;float: right;margin-right: 5px;}
 .list .shadow-box,.soft .shadow-box {width: 720px;}
 .list ul {width:680px;padding: 4px 20px;}
 .list li {height: 80px;padding: 6px 10px;border-bottom: 1px solid #c3c3c3;position: relative;}

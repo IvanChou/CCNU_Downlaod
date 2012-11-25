@@ -5,6 +5,7 @@
 		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 		<meta name="description" content="华中师范大学软件下载中心(网络中心)">
 		<link rel="stylesheet" href="<?=$site_url ?>style/style.css" type="text/css" media="all">
+		<link rel="stylesheet" href="<?=$site_url ?>style/blackbox.css" type="text/css" media="all">
 	</head>
 
 	<body>

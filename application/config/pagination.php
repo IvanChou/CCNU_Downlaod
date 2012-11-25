@@ -1,7 +1,7 @@
 <?php  if ( ! defined('BASEPATH')) exit('No direct script access allowed' );
 
 $config['uri_segment'] 	= 4;
-$config['per_page'] 	= 1;
+$config['per_page'] 	= 2;
 $config['cur_tag_open']	= ' <a class="current num" href="javascript:void(0);">';
 $config['cur_tag_close']= '</a>';
 $config['first_link']	= FALSE;
