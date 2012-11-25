@@ -16,11 +16,11 @@ class Search extends CI_Controller {
 	}
 
 	public function index($str = FALSE)
-	{
-		$str = trim(urldecode($str));
-		$data['map']['term_name'] = "关于 $str 的搜索结果";
-		
+	{		
 		if(! $str) show_404();
+		
+		$str = trim($str);
+		$data['map']['term_name'] = "关于 $str 的搜索结果";
 		
 		$data['site_url'] = base_url();
 		$data['terms'] = $this->terms_model->get_terms(TRUE);
@@ -31,8 +31,6 @@ class Search extends CI_Controller {
 		$config['total_rows'] = $this->softs_model->get_softs_num($query);
 		$config['uri_segment'] 	= 3;
 		$this->pagination->initialize($config); 
-		
-		echo $this->db->last_query();
 		
 		$query['limit'] = $this->pagination->per_page;
 		$query['offset'] = $this->uri->segment($this->pagination->uri_segment);
