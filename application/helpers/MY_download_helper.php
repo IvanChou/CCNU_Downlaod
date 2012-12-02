@@ -53,7 +53,7 @@ function force_download($filename = '', $data = '')
 	// Generate the server headers
 	if (strpos($_SERVER['HTTP_USER_AGENT'], "MSIE") !== FALSE) {
 		header('Content-Type: '.$mime.',text/html');
-		header('Content-Disposition: attachment; filename="'.$filename.'"');
+		header('Content-Disposition: attachment; filename="'.iconv("UTF-8","GB2312//TRANSLIT",$filename).'"');
 		header('Expires: 0');
 		header('Cache-Control: must-revalidate, post-check=0, pre-check=0');
 		header("Content-Transfer-Encoding: binary");

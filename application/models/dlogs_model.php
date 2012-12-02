@@ -11,10 +11,10 @@ class Dlogs_model extends CI_Model {
 		if(! $id) return FALSE;
 		
 		$data = array(
-					"downer_ip"=>$_SERVER['REMOTE_ADDR'],
+					"downer_ip"=>$this->input->ip_address(),
 					"down_time"=>date('Y-m-d h:i:s'),
 					"down_soft"=>$id,
-					"downer_bs"=>$this->agent->browser(),
+					"downer_bs"=>$this->agent->browser()." ".$this->agent->version(),
 					"downer_os"=>$this->agent->platform()
 					);
 		$this->db->insert('downlog', $data);

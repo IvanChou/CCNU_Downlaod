@@ -37,6 +37,44 @@
 		)
 	}
 	
+	function scroll_notice () {
+		var h = $("#notice").find("p").height(),top,i;
+		i = parseInt(h/111);
+		setInterval(function(){
+			top = parseInt($("#notice").find("p").css("margin-top"));
+			if(top == -111*i) top = 111;
+			$("#notice").find("p").fadeOut(300,function(){
+				$("#notice").find("p").css("margin-top",top-111);
+				$("#notice").find("p").fadeIn(500);
+			})
+		},4000)
+	}
+	
+	function nav () {
+		$("#category dl").hover(
+			function(){
+				if(! $(this).hasClass("current"))$(this).children("dd").hide();
+			},
+			function(){
+				if($(this).hasClass("current")) {
+					$(this).children("dd").show();
+					$(this).addClass("show");
+				}
+			}
+		);
+		
+		$("#category dl").click(function(){
+			if($(this).hasClass("current")) return true;
+			$("#category dl").removeClass("current");
+			$(this).addClass("current");
+			$("#category dl").children("dd").stop(true,true);
+			$(this).children("dd").slideDown(500,function(){
+					$("#category dl:not(.current)").children("dd").slideUp(300);
+				});
+			return false;
+		})
+	}
+	
 	function set_footer () {
 		var window_height = window.innerHeight;
 		var body_height = document.body.clientHeight;
@@ -78,9 +116,10 @@
 	
 	function like () {
 		var url;
+		var timestamp=new Date().getTime();
 		$(".agree").click(function() {
 			url = $(this).attr("href");
-			$.get(url,function(result){
+			$.get(url,{_:timestamp},function(result){
 				$.alert(result);
 			})
 			return false;
@@ -89,9 +128,10 @@
 	
 	function unlike () {
 		var url;
+		var timestamp=new Date().getTime();
 		$(".disagree").click(function() {
 			url = $(this).attr("href");
-			$.get(url,function(result){
+			$.get(url,{_:timestamp},function(result){
 				$.alert(result);
 			})
 			return false;
@@ -107,16 +147,16 @@
 			text = $("#comment").find("textarea").val();
 			name = $("#comment").find("input:text").val();
 			
-			if(url == "" || id == "") {
-				$.alert("貌似这个网页有问题了，去联系管理员吧~");
+			if(text == "") {
+				$.alert("评论框有这么大块空白白，你确定不写点什么？");
 				return false;
 			}
 			if(name == "") {
 				$.alert("着什么急，名字还没填呢~");
 				return false;
 			}
-			if(text == "") {
-				$.alert("评论框有这么大块空白白，你确定不写点什么？");
+			if(url == "" || id == "") {
+				$.alert("貌似这个网页有问题了，去联系管理员吧~");
 				return false;
 			}
 			
@@ -150,6 +190,8 @@
 		like();
 		unlike();
 		comment();
+		nav();
+		scroll_notice();
 	})
 	
 }(window,document,jQuery))

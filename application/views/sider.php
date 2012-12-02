@@ -8,7 +8,7 @@
 	<div id="category" class="shadow-box">
 		<h2>软件分类</h2>
 		<?php foreach($terms as $i=>$k): ?>
-		<dl <?php if($map['term_id']?$k['term_id']==$map['term_id']:$i==0)echo 'class="current"' ?>>
+		<dl <?php if($map['term_id']?$k['term_id']==$map['term_id']:$i==0)echo 'class="current show"' ?>>
 			<a href="<?=$k['term_url']?>">
 				<dt><?=$k['term_name']?></dt>
 			</a>

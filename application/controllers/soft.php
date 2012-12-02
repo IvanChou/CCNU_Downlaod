@@ -59,7 +59,6 @@ class Soft extends CI_Controller {
 		$name = $soft['soft_name'].'.'.$extend;
 		$file = file_get_contents($soft['soft_url']);
 		
-		$this->output->set_content_type('text/html');
 		force_download($name, $file);
 	}
 	
@@ -70,6 +69,7 @@ class Soft extends CI_Controller {
 		$this->form_validation->set_rules('soft-id', 'Soft-id', 'callback_is_exist[true]');
 		$this->form_validation->set_rules('content', 'Comment-content', 'htmlspecialchars|required|min_length[5]|max_length[140]|xss_clean');
 		$this->form_validation->set_rules('name', 'user-name', 'trim|required|min_length[1]|max_length[12]|xss_clean');
+		$this->output->set_header("Content-type:text/html; charset=utf-8");
 		
 		if ($this->form_validation->run() == FALSE){
 			echo validation_errors();
@@ -84,6 +84,7 @@ class Soft extends CI_Controller {
 	{
 		if(! $this->is_exist($id)) show_404();
 		$result = $this->dlogs_model->appraise($id,"like");
+		$this->output->set_header("Content-type:text/html; charset=utf-8");
 		
 		switch ($result) {
 			case '404':
@@ -102,6 +103,7 @@ class Soft extends CI_Controller {
 	{
 		if(! $this->is_exist($id)) show_404();
 		$result = $this->dlogs_model->appraise($id,"unlike");
+		$this->output->set_header("Content-type:text/html; charset=utf-8");
 
 		switch ($result) {
 			case '404':

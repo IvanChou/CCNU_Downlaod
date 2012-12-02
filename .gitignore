@@ -13,3 +13,5 @@ application/controllers/.DS_Store
 htdocs/.DS_Store
 
 htdocs/cd-resource
+
+application/config/.DS_Store
