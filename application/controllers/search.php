@@ -32,8 +32,6 @@ class Search extends CI_Controller {
 		$config['uri_segment'] 	= 3;
 		$this->pagination->initialize($config); 
 		
-		echo $this->db->last_query();
-		
 		$query['limit'] = $this->pagination->per_page;
 		$query['offset'] = $this->uri->segment($this->pagination->uri_segment);
 		$data['softs'] = $this->softs_model->get_softs($query);

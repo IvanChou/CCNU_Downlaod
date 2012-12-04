@@ -79,8 +79,7 @@
 		var window_height = window.innerHeight;
 		var body_height = document.body.clientHeight;
 		if(window_height>body_height){
-			footer_top = window_height - body_height +10;
-			$(".footer").css('margin-top',footer_top);
+			$("body").css("min-height",window_height);
 		}
 	}
 	
