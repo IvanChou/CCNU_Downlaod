@@ -3,9 +3,7 @@
 		<h2>装机必备</h2>
 		<?php foreach($need_title as $k=>$title): ?>
 		<dl <?php if($k==0) echo 'class="current"'; ?>>
-			<dt>
-				<?=$title?>
-			</dt>
+			<dt><?=$title?></dt>
 			<div class="trige">&nbsp;</div>
 			<dd>
 				<ul>

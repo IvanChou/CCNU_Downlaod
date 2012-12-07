@@ -4,7 +4,7 @@ require ('transact_users.php');
 <div id="profile-links">
 你好， <?php echo $_SESSION['USERNAME']; ?>
 <br />
-<a href="#" title="View the Site">访问前台网站</a> | <a href="users.php?action=logout" title="Sign Out">退出</a>
+<a target="_blank" href="http://218.199.196.7:81" title="View the Site">访问前台网站</a> | <a href="users.php?action=logout" title="Sign Out">退出</a>
 </div>
      
 <!---------------------------------------------------#main-nav ----------------------------------------------------------->
@@ -30,6 +30,14 @@ require ('transact_users.php');
 <a <?php if(isset($_GET['title'])&&($_GET['title'])=='users') echo "class='nav-top-item current'"; else echo "class='nav-top-item'";?>>用户管理</a>
 <ul>
 <li><a href="users.php?title=users&amp;list=view" onmouseover="this.className='current'" onmouseout="this.className='other'">用户管理</a></li>
+</ul>
+</li>
+
+<li>
+<a <?php if(isset($_GET['title'])&&($_GET['title'])=='disscuss') echo "class='nav-top-item current'"; else echo "class='nav-top-item'";?>>
+评论管理</a>
+<ul>
+<li><a href="disscuss.php?title=disscuss&amp;list=view" onmouseover="this.className='current'" onmouseout="this.className='other'">评论管理</a></li>
 </ul>
 </li>
 </ul> 

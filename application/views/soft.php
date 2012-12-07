@@ -5,9 +5,7 @@
 			<a href="<?=$site_url?>">首页</a> > <a href="<?=$soft['term_url']?>"><?=$soft['term_name']?></a> > <a href="<?=$soft['tag_url']?>"><?=$soft['tag_name']?></a>
 		</div>
 	</div>
-	<div class="dishadowplus">
-		&nbsp;
-	</div>
+	<div class="dishadowplus">&nbsp;</div>
 </div>
 
 <div id="soft-main" class="soft">
@@ -15,33 +13,17 @@
 		<h3>软件摘要</h3>
 		<img src="<?=$soft['soft_img']?>" alt="<?=$soft['soft_name']?>" />
 		<ul>
-			<li>
-				软件分类：<?=$soft['term_name']?>
-			</li>
-			<li>
-				软件大小：<?=$soft['soft_size']?>
-			</li>
-			<li>
-				上传时间：<?=$soft['post_time']?>
-			</li>
-			<li>
-				下载次数：<?=$soft['down_count']?>次
-			</li>
-			<li>
-				人气指数：支持[<?=$soft['downer_top_count']?>]  反对[<?=$soft['downer_down_count']?>]
-			</li>
-			<li>
-				软件简介：
-			</li>
+			<li>软件分类：<?=$soft['term_name']?></li>
+			<li>软件大小：<?=$soft['soft_size']?></li>
+			<li>上传时间：<?=$soft['post_time']?></li>
+			<li>下载次数：<?=$soft['down_count']?>次</li>
+			<li>人气指数：支持[<?=$soft['downer_top_count']?>]  反对[<?=$soft['downer_down_count']?>]	</li>
+			<li>软件简介：</li>
 		</ul>
-		<p>
-			<?=$soft['soft_description']?>
-		</p>
+		<p><?=$soft['soft_description']?></p>
 		<a class="button" href="<?=$soft['soft_down']?>">Download</a>
 	</div>
-	<div class="dishadowplus">
-		&nbsp;
-	</div>
+	<div class="dishadowplus">&nbsp;</div>
 </div>
 
 <div id="soft-comment" class="soft">
@@ -52,9 +34,7 @@
 			<li>
 				<span class="name"><?=$v['user_name']?></span>
 				<span class="time">发表于 <?=$v['com_time']?></span>
-				<p>
-					<?=$v['com_text']?>
-				</p>
+				<p><?=$v['com_text']?></p>
 			</li>
 			<?php endforeach ?>
 		</ul>
@@ -64,9 +44,7 @@
 		</div>
 
 	</div>
-	<div class="dishadowplus">
-		&nbsp;
-	</div>
+	<div class="dishadowplus">&nbsp;</div>
 </div>
 
 <div id="comment" class="soft">
@@ -84,8 +62,6 @@
 		</form>
 
 	</div>
-	<div class="dishadowplus">
-		&nbsp;
-	</div>
+	<div class="dishadowplus">&nbsp;</div>
 </div>
 <!-- soft.php end here -->

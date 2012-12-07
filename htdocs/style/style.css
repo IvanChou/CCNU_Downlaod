@@ -9,7 +9,7 @@ License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
 
 html { margin: 0px; padding: 0px; border: none; font-size: small; font-family: "微软雅黑", Tahoma, Arial, sans-serif;background: #EAF8F1 url(../images/bground.png) repeat-x;}
-body { margin: 0px; padding: 0px; border: none;position: relative;}
+body { margin: 0px; padding: 0px; border: none;position: relative;min-height: 720px;}
 
 a { text-decoration:none; padding:0px; margin:0px; color:#000000; } 
 a:visited{ text-decoration:none; padding:0px; margin:0px; color:#000000; }
@@ -23,7 +23,7 @@ dl,dt,dd,h1,h2,h3,p {margin: 0;}
 input:focus,textarea:focus {outline-color: #009B34;}
 
 h1 {display: none;}
-h2 {height: 38px;background: url(../images/cubic.png) no-repeat left center;border-bottom: 1px solid #009944;text-indent: 16px;line-height: 38px;font-weight: bold;font-size: 130%;color: #009944;}
+h2 {height: 38px;background: url(../images/cd-icon.png) -738px -127px no-repeat;border-bottom: 1px solid #009944;text-indent: 16px;line-height: 38px;font-weight: bold;font-size: 130%;color: #009944;}
 h3 {height: 28px;line-height: 28px;text-indent: 28px;background: -moz-linear-gradient(top,#f6f6f6,#dcdcdc);background:-webkit-linear-gradient(top,#f6f6f6,#dcdcdc);background: -o-linear-gradient(top,#f6f6f6,#dcdcdc);filter: progid:DXImageTransform.Microsoft.gradient(GradientType=0, startColorstr=#f6f6f6, endColorstr=#dcdcdc);}
 h4 {margin: 4px 0;display: inline-block;}
 
@@ -51,7 +51,8 @@ input#button {width: 55px;height: 23px;line-height: 23px;padding: 0;background: 
 #category dd {scrollbar-base-color: #42b975;} /* scrollbar css for IE */
 #category dd a {width: 95%;height: 24px;margin: 0 auto;border-top: 1px solid #b6b6b6;display: block;line-height: 24px;text-indent: 28px;}
 #category dd a:hover {background: #EFEFEF;}
-#category .current dt,#category dl:hover dt {height: 34px;border-bottom: 1px solid #009944;color: #FFFFFF;box-shadow: 0 1px 3px #b6b6b6;background: url(../images/cd-icon.png) -63px -110px no-repeat;}
+#category .current dt,#category dl:hover dt {height: 34px;border-bottom: 1px solid #009944;box-shadow: 0 1px 3px #b6b6b6;background: url(../images/cd-icon.png) -63px -110px no-repeat;}
+#category .current dt a,#category dl:hover dt a {color: #FFFFFF;}
 #category .show dd,#category dl:hover dd {display: block;}
 
 #rank {width: 210px;}
@@ -87,23 +88,24 @@ input#button {width: 55px;height: 23px;line-height: 23px;padding: 0;background: 
 #often {width: 220px;height: 220px;float: left;}
 #often .shadow-box {width: 210px;}
 #often ul {width: 190px;height: 162px;padding: 4px 10px 5px}
-#often li {width: 186px;height: 44px;margin: 8px 2px;background: url(../images/often.png) no-repeat;}
-#often li.first,#often li:hover {background: url(../images/often-hover.png) no-repeat;}
+#often li {width: 186px;height: 44px;margin: 8px 2px;background: url(../images/cd-icon.png) -539px -88px no-repeat;}
+#often li.first,#often li:hover {background: url(../images/cd-icon.png) -539px -38px no-repeat;}
 #often li img {margin: 6px 8px;height: 32px;width: 32px;float: left;}
 #often li a {height: 32px;padding: 6px 10px;line-height: 32px;display: block;overflow: hidden;}
 #often li.first a,#often li:hover a {color: #FFFFFF;}
 /* ---- home defines end*/
 	
 /* ---- list defines start*/
-#softs h2 {background: url(../images/dicubic.png) left center no-repeat;}
+#softs h2 {background: url(../images/cd-icon.png) -739px -210px no-repeat;}
 /* ---- list defines end*/
 	
 /* ---- soft defines start*/
 #soft-title .shadow-box {padding-bottom: 1px;}
+#soft-title h2 {background: url(../images/cd-icon.png) -740px -169px no-repeat;}
 
 #soft-main img {width: 100px;height: 100px;padding: 5px;margin: 20px 30px;box-shadow: 0 0 6px #797575;float: left;}
 #soft-main ul {width: 260px;margin: 11px 0 0;line-height: 30px;display: inline-block;}
-#soft-main li {background: url(../images/cd-icon.png) -665px -182px no-repeat;text-indent: 24px;}
+#soft-main li {background: url(../images/cd-icon.png) -737px -88px no-repeat;text-indent: 24px;}
 #soft-main a.button {position: absolute;width: 232px;height: 70px;top: 80px;right: 40px;background: url(../images/cd-icon.png) -295px -203px no-repeat;border: none;padding: 0;line-height: 70px;text-align: center;color: #FFFFFF;font-size: 240%;font-weight: bolder;text-shadow: -1px -1px #353535;}
 #soft-main p {margin-left: 170px;text-indent: 24px;padding: 0 24px 20px;line-height: 150%;}
 
@@ -117,8 +119,8 @@ input#button {width: 55px;height: 23px;line-height: 23px;padding: 0;background: 
 #comment input[type="text"] {width: 100%;height: 24px;line-height:24px;border: 1px solid #009944;padding: 0;}
 #comment input[type="submit"] {width: 124px;height: 34px;background: url(../images/cd-icon.png) -398px -156px no-repeat; border: none;padding: 0;margin: 6px 0 6px 84px;color: #FFFFFF;font-size: 130%;}
 #comment a {padding: 4px 0 4px 24px;margin-right: 40px;font-weight: 700;color: #353535;}
-#comment .agree {background: url(../images/cd-icon.png) -560px -147px no-repeat;}
-#comment .disagree {background: url(../images/cd-icon.png) -610px -147px no-repeat;}
+#comment .agree {background: url(../images/cd-icon.png) -736px -48px no-repeat;}
+#comment .disagree {background: url(../images/cd-icon.png) -736px -265px no-repeat;}
 /* ---- soft defines end*/
 	
 .shadow {width: 220px;height: 10px;margin: 0;background: url(../images/cd-icon.png) -510px -15px no-repeat;}

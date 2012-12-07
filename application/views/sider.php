@@ -1,17 +1,13 @@
 <div class="sider">
 	<?php if(! ($map['term_name'] || $soft)): ?>
-	<div class="welcome">
-		欢迎您！某某
-	</div>
+	<div class="welcome">欢迎您！某某</div>
 	<?php endif ?>
 
 	<div id="category" class="shadow-box">
 		<h2>软件分类</h2>
 		<?php foreach($terms as $i=>$k): ?>
 		<dl <?php if($map['term_id']?$k['term_id']==$map['term_id']:$i==0)echo 'class="current show"' ?>>
-			<a href="<?=$k['term_url']?>">
-				<dt><?=$k['term_name']?></dt>
-			</a>
+			<dt><a href="<?=$k['term_url']?>"><?=$k['term_name']?></a></dt>
 			<dd>
 				<?php foreach($k['tags'] as $v): ?>
 				<a href="<?=$v['tag_url']?>"><?=$v['tag_name']?></a>
@@ -20,9 +16,7 @@
 		</dl>
 		<?php endforeach; ?>
 	</div>
-	<div class="shadow">
-		&nbsp;
-	</div>
+	<div class="shadow">&nbsp;</div>
 
 	<div id="rank" class="shadow-box">
 		<h2>下载排行</h2>
@@ -34,8 +28,6 @@
 			<?php endforeach; ?>
 		</ul>
 	</div>
-	<div class="shadow">
-		&nbsp;
-	</div>
+	<div class="shadow">&nbsp;</div>
 </div>
 <!-- sider.php end here -->

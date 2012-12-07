@@ -1,0 +1,66 @@
+/*
+Theme Name: CCNU_Download (hack for ie6)
+Theme URI: http://down.ccnu.edu.cn 
+Description: 华师下载中心（网络技术中心）
+Author: xworm
+License: GNU General Public License v2.0
+License URI: http://www.gnu.org/licenses/gpl-2.0.html
+*/
+html {font-family: Arial, sans-serif;}
+	
+h2 {background: url(../images/cd-icon-ie6.png) -738px -127px no-repeat;}
+h4 {font-size: 100%;}
+
+/* header defines begin*/
+.banner-bg {width: 960px;}
+.logo {behavior: url(../style/iepngfix.htc);}
+.header hr {width: 694px;height:4px;color: white;display: block;}
+#search {margin-top: -43px;behavior: url(../style/iepngfix.htc);float: right;}
+input#keywords {margin: 0 1px 0 16px;}
+/* header defines end*/
+
+/* wrapper defines begin*/
+.wrapper {margin: 0 auto;}
+
+/* ---- sider defines begin*/
+.sider {margin: 0 0 0 2px;width: 220px;float: left;}
+.welcome {behavior: url(../style/iepngfix.htc);}
+#rank li span {float: left;}
+/* ---- sider defines end*/
+
+/* ---- home defines begin*/
+#need dl {margin: 6px 0 6px 5px}
+#need dl+dl {width: 79px;border-left: 1px solid #FFFFFF;margin: 6px 0;}
+#need dt {margin-bottom: 10px;}
+#need li {padding: 7px 0;}
+#need li img {margin: 0 14px 0 0;}
+#need li p {line-height: 16px;}
+#need .trige {width: 0;height: 0;font-size:0;line-height: 0;border-left: 6px solid white;border-right: 6px solid white;border-bottom: 6px solid #009b34;position: absolute;top: 69px;margin-left: -40px;}
+/* ---- home defines end*/
+	
+/* ---- list defines start*/
+#softs h2 {background: url(../images/cd-icon-ie6.png) -739px -210px no-repeat;}
+/* ---- list defines end*/
+	
+/* ---- soft defines start*/
+#soft-title h2 {background: url(../images/cd-icon-ie6.png) -740px -169px no-repeat;}
+
+#soft-main li {background: url(../images/cd-icon-ie6.png) -737px -88px no-repeat;text-indent: 24px;}
+#soft-main a.button {background: url(../images/cd-icon.png) -295px -203px no-repeat;behavior: url(../style/iepngfix.htc);}
+
+#comment input[type="submit"] {background: url(../images/cd-icon-ie6.png) -398px -156px no-repeat;cursor: pointer;}
+#comment .agree {background: url(../images/cd-icon-ie6.png) -736px -48px no-repeat;}
+#comment .disagree {background: url(../images/cd-icon-ie6.png) -736px -265px no-repeat;}
+/* ---- soft defines end*/
+	
+.shadow {behavior: url(../style/iepngfix.htc);line-height: 10px;}
+.shadowplus {behavior: url(../style/iepngfix.htc);line-height: 10px;}
+.dishadowplus {behavior: url(../style/iepngfix.htc);line-height: 10px;}
+
+.list,.soft {width: 730px;float: right;margin-right: 3px;}
+.list li {height: 74px;}
+
+.pages {width: 680px;border-top: 1px solid #c3c3c3;margin: 0 20px;height: 40px;padding-top: 16px;line-height: 20px;text-align: center;}
+/* wrapper defines end*/
+
+/* footer defines begin*/

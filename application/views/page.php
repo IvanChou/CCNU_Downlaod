@@ -16,9 +16,7 @@
 			<li>
 				<a href="<?=$k['soft_page']?>"><img src="<?=$k['soft_img']?>" alt="<?=$k['soft_name']?>" /></a>
 				<a href="<?=$k['soft_page']?>"><h4><?=$k['soft_name']?></h4></a>
-				<p>
-					<?=$k['soft_description']?>
-				</p>
+				<p><?=$k['soft_description']?></p>
 				<div class="brief-info">
 					<span class="date"><?=$k['post_time']?></span>
 					<span class="downs">下载次数：<?=$k['down_count']?></span>
@@ -32,8 +30,6 @@
 			<?php echo $this->pagination->create_links(); ?>
 		</div>
 	</div>
-	<div class="dishadowplus">
-		&nbsp;
-	</div>
+	<div class="dishadowplus">&nbsp;</div>
 </div>
 <!-- page.php end here -->

@@ -73,14 +73,13 @@
 				});
 			return false;
 		})
+		
+		if (($.browser.msie) && ($.browser.version == "6.0")){}
 	}
 	
 	function set_footer () {
 		var window_height = window.innerHeight;
-		var body_height = document.body.clientHeight;
-		if(window_height>body_height){
-			$("body").css("min-height",window_height);
-		}
+		$("body").css("min-height",window_height);
 	}
 	
 	function search () {

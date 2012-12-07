@@ -11,7 +11,7 @@ require_once ('./includes/menu.php');
 ?>
 			
 <?php
-require ('./users_common.php');
+require ('./disscuss_common.php');
 ?>
 
 <?php
