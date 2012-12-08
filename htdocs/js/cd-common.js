@@ -39,15 +39,28 @@
 	
 	function scroll_notice () {
 		var h = $("#notice").find("p").height(),top,i;
+		var t;
 		i = parseInt(h/111);
-		setInterval(function(){
-			top = parseInt($("#notice").find("p").css("margin-top"));
-			if(top == -111*i) top = 111;
-			$("#notice").find("p").fadeOut(300,function(){
-				$("#notice").find("p").css("margin-top",top-111);
-				$("#notice").find("p").fadeIn(500);
-			})
-		},4000)
+		t = p_scroll();
+		
+		$("#notice").find("p").hover(function() {
+			clearInterval(t);
+		}, function() {
+			t = p_scroll();
+		});
+		
+		function p_scroll () {
+			t = setInterval(function(){
+				top = parseInt($("#notice").find("p").css("margin-top"));
+				if(top == -111*i) top = 111;
+				$("#notice").find("p").fadeOut(300,function(){
+					$("#notice").find("p").css("margin-top",top-111);
+					$("#notice").find("p").fadeIn(500);
+				})
+			},4000)
+			
+			return t;
+		}
 	}
 	
 	function nav () {
@@ -68,9 +81,8 @@
 			$("#category dl").removeClass("current");
 			$(this).addClass("current");
 			$("#category dl").children("dd").stop(true,true);
-			$(this).children("dd").slideDown(500,function(){
-					$("#category dl:not(.current)").children("dd").slideUp(300);
-				});
+			$(this).children("dd").slideDown(500);
+			$("#category dl:not(.current)").children("dd").slideUp(300);
 			return false;
 		})
 		

@@ -190,8 +190,8 @@
 
             separator03 : { visible : false, separator : true },
 
-            undo : { visible : false },
-            redo : { visible : false },
+            undo : { visible : true },
+            redo : { visible : true },
 
             separator04 : { visible : false, separator : true },
 
@@ -271,7 +271,7 @@
             separator09 : { separator : true },
 
             html : {
-                visible : false,
+                visible : true,
                 exec    : function()
                 {
                     if ( this.viewHTML )

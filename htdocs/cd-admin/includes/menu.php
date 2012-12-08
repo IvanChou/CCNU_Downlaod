@@ -4,7 +4,7 @@ require ('transact_users.php');
 <div id="profile-links">
 你好， <?php echo $_SESSION['USERNAME']; ?>
 <br />
-<a target="_blank" href="http://218.199.196.7:81" title="View the Site">访问前台网站</a> | <a href="users.php?action=logout" title="Sign Out">退出</a>
+<a target="_blank" href="http://218.199.196.7" title="View the Site">访问前台网站</a> | <a href="users.php?action=logout" title="Sign Out">退出</a>
 </div>
      
 <!---------------------------------------------------#main-nav ----------------------------------------------------------->

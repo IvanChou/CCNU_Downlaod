@@ -24,7 +24,7 @@ function HTMerDel()
 						 
 <tfoot>
 <tr>
-<td colspan="6">
+<td colspan="3">
 <div class="bulk-actions align-left">
 <?php
 //仅cd-admin可以添加管理员

@@ -32,8 +32,9 @@ function HTMerDel2()
 						 
 <tfoot>
 <tr>
-<td colspan="11">
-<div class="bulk-actions align-left">
+<td colspan="4">
+<!--<div class="bulk-actions align-left">-->
+<div class="pagination">
 <?php
 $query = "SELECT s.soft_name,com.com_id,com.user_name,com.com_text FROM `cd_softs` s ,`cd_comments` com WHERE s.ID = com.soft_id order by com.com_id;";
 mysql_query("set names utf8");
@@ -77,11 +78,12 @@ HTML;
 $j=1;
 while ($row = mysql_fetch_assoc($result) and $j <= $records_per_page) {
 	$Com_Id = $row['com_id'];
+	$Com_Text = $row['com_text'];
 	extract($row);
 	echo '<tr>';
 	echo '<td>'.htmlspecialchars($soft_name).'</td>';
 	echo '<td>'.htmlspecialchars($user_name).'</td>';
-	echo '<td>'.htmlspecialchars($com_text).'</td>';
+	echo '<td width="350px">'.$Com_Text.'</td>';
 	echo '<td style="text-align:center;">'." <a href='del_disscuss.php?com_id=$Com_Id' onClick='return HTMerDel();'>删除</a>"; 
 	echo '</td></tr>';
 	$j++;

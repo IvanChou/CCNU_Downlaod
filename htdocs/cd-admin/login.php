@@ -7,7 +7,7 @@ if(isset($_POST['submit'])){
 	$name = escape_data(trim($_POST['name']));
 	$password = md5(escape_data(trim($_POST['password'])));  
 	$imgcode = trim($_POST['imgcode']); // 接收从登录页面输入框提交过来的验证码
-	$myimagecode = trim($_SESSION['randcode']); // 从sesion中取得验证码
+	$myimagecode = trim($_SESSION['code']); // 从sesion中取得验证码
 	$sql = "SELECT * FROM `cd_admin` WHERE admin_name = '$name' AND admin_pass = '$password';";
 	mysql_query("set names utf8");
 	$result = mysql_query($sql) or die(mysql_error());
@@ -74,7 +74,7 @@ function CheckPost()
 
 <p>
 <label>验证码</label>
-<img src="code.php" alt="验证码" /><input type="text" name="imgcode" class="text-input" id="yanzhengma" value="<?php if (isset($_POST['imgcode'])) echo $_POST['imgcode']; ?>" />
+<img src="code.php" alt="看不清？请点一下！" onclick="this.src='code.php?'+Math.random()"/><input type="text" name="imgcode" class="text-input" id="yanzhengma" value="<?php if (isset($_POST['imgcode'])) echo $_POST['imgcode']; ?>" />
 </p>
 <div class="clear"></div>
 

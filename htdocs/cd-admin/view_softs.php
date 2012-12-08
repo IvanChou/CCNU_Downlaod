@@ -21,7 +21,7 @@ function HTMerDel2()
 <div class="content-box-content">
 <div class="tab-content default-tab" > <!-- This is the target div. id must match the href of this div's tab -->
 <form method="post" action="del_selected_softs.php" name="myform">
-<table style="white-space:nowrap;">
+<table style="white-space:nowrap;border:1px solid #bebebe;">
 <thead>
 <tr>
 <th><input class="check-all" type="checkbox" /></th>
