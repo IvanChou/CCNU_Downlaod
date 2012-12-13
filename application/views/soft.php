@@ -20,7 +20,7 @@
 			<li>人气指数：支持[<?=$soft['downer_top_count']?>]  反对[<?=$soft['downer_down_count']?>]	</li>
 			<li>软件简介：</li>
 		</ul>
-		<p><?=$soft['soft_description']?></p>
+		<div class="descr"><?=$soft['soft_description']?></div>
 		<a class="button" href="<?=$soft['soft_down']?>">Download</a>
 	</div>
 	<div class="dishadowplus">&nbsp;</div>

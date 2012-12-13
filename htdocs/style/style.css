@@ -57,9 +57,9 @@ input#button {width: 55px;height: 23px;line-height: 23px;padding: 0;background: 
 
 #rank {width: 210px;}
 #rank ul {padding: 4px 0 8px;}
-#rank li {width: 176px;height: 24px;margin: 0 auto; border-bottom: 1px dashed #B6B6B6;line-height: 24px;background: url(../images/rank.png) 0 -1px no-repeat;}
+#rank li {width: 176px;height: 24px;margin: 0 auto; border-bottom: 1px dashed #B6B6B6;line-height: 24px;background: url(../images/cd-icon.png) -539px -135px no-repeat;}
 #rank li:last-child {border-bottom: 6px solid #FFFFFF;}
-#rank li span {width: 18px;height: 24px;font-size: 75%;text-align: center;display: inline-block;color: #FFFFFF;}
+#rank li span {width: 18px;height: 24px;font-size: 75%;text-align: center;display: inline-block;color: #FFFFFF;cursor: default;}
 #rank li a {width: 158px;height: 24px;text-indent: 16px;display: inline-block;float: right;overflow: hidden;}
 /* ---- sider defines end*/
 
@@ -83,7 +83,7 @@ input#button {width: 55px;height: 23px;line-height: 23px;padding: 0;background: 
 #notice {width: 220px;height: 180px;float: left;}
 #notice .shadow-box {width: 210px;}
 #notice .box {height: 111px;border: 10px solid #FFFFFF;padding: 0 4px;overflow: hidden;}
-#notice p {text-indent: 24px;line-height: 16px;}
+#notice p {text-indent: 24px;line-height: 16px;cursor: default;}
 
 #often {width: 220px;height: 220px;float: left;}
 #often .shadow-box {width: 210px;}
@@ -107,7 +107,7 @@ input#button {width: 55px;height: 23px;line-height: 23px;padding: 0;background: 
 #soft-main ul {width: 260px;margin: 11px 0 0;line-height: 30px;display: inline-block;}
 #soft-main li {background: url(../images/cd-icon.png) -737px -88px no-repeat;text-indent: 24px;}
 #soft-main a.button {position: absolute;width: 232px;height: 70px;top: 80px;right: 40px;background: url(../images/cd-icon.png) -295px -203px no-repeat;border: none;padding: 0;line-height: 70px;text-align: center;color: #FFFFFF;font-size: 240%;font-weight: bolder;text-shadow: -1px -1px #353535;}
-#soft-main p {margin-left: 170px;text-indent: 24px;padding: 0 24px 20px;line-height: 150%;}
+#soft-main .descr {margin-left: 170px;text-indent: 24px;padding: 0 24px 20px;line-height: 150%;}
 
 #soft-comment ul {width: 670px;padding: 0 25px;}
 #soft-comment li {padding: 10px 0;border-bottom: 1px solid #cccccc;line-height: 150%;}
@@ -117,7 +117,7 @@ input#button {width: 55px;height: 23px;line-height: 23px;padding: 0;background: 
 #comment label {display: block;font-weight: 700;margin: 6px;}
 #comment textarea {width: 100%;height: 80px;border: 1px solid #009944;padding: 0;}
 #comment input[type="text"] {width: 100%;height: 24px;line-height:24px;border: 1px solid #009944;padding: 0;}
-#comment input[type="submit"] {width: 124px;height: 34px;background: url(../images/cd-icon.png) -398px -156px no-repeat; border: none;padding: 0;margin: 6px 0 6px 84px;color: #FFFFFF;font-size: 130%;}
+#comment input[type="submit"] {width: 124px;height: 34px;background: url(../images/cd-icon.png) -398px -156px no-repeat; border: none;padding: 0;margin: 6px 0 6px 84px;color: #FFFFFF;font-size: 130%;cursor: pointer;}
 #comment a {padding: 4px 0 4px 24px;margin-right: 40px;font-weight: 700;color: #353535;}
 #comment .agree {background: url(../images/cd-icon.png) -736px -48px no-repeat;}
 #comment .disagree {background: url(../images/cd-icon.png) -736px -265px no-repeat;}
@@ -133,6 +133,7 @@ input#button {width: 55px;height: 23px;line-height: 23px;padding: 0;background: 
 .list .shadow-box,.soft .shadow-box {width: 720px;}
 .list ul {width:680px;padding: 4px 20px;}
 .list li {height: 80px;padding: 6px 10px;border-bottom: 1px solid #c3c3c3;position: relative;}
+.list li p {height: 48px;overflow-y: hidden;}
 .list img {width: 60px;height: 60px;margin: 6px 16px 0 0;float: left;}
 .list .brief-info {position: absolute;color: #006732;font-size: 95%;top: 11px;right: 0;}
 .list .brief-info span {margin: 0 6px;}

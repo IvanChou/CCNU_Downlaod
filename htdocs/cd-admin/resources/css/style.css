@@ -26,7 +26,7 @@ h1, h2, h3, h4, h5, h6 {
                 font-weight: bold;
                 }
 
-h1            { font-family:"微软雅黑", "宋体"; font-size: 24px; font-weight: bold; color:#CCC; 
+h1            { font-family:"微软雅黑", "宋体"; font-size: 30px; font-weight: bold; color:#CCC; 
 				 /* Remove this line and delete the logo (in the HTML) if you don't want an image as a logo */
 				}
 				
@@ -369,7 +369,7 @@ ul.content-box-tabs li a.current {
                 
 #main-content table td,
 #main-content table th {
-                padding: 10px;
+                padding: 6px 10px 6px 10px;
                 line-height: 1.3em;
                 }        
 				
@@ -629,6 +629,9 @@ body#login {
 	_margin-left:15px;
 	display:inline;
 }
+#login-wrapper #login-content form input.button{
+	margin-right:10px;
+}
 #login-wrapper #login-content img{
 	float:right;
 }
@@ -806,3 +809,5 @@ div.wysiwyg ul.panel li a.removeFormat { background-position: -80px -64px; }
 div.wysiwyg ul.panel li a.empty { background-position: -64px -80px; }
 
 div.wysiwyg iframe { border: 0; margin: 5px 0 0 0; clear: left; width: 97.5% !important; }
+/* ie下实现图片预览功能需要此css配合 */
+#imghead {filter:progid:DXImageTransform.Microsoft.AlphaImageLoader(sizingMethod=image);} 

@@ -1,20 +1,9 @@
 <?php
-require_once ('./includes/mysql_connect.php');
+define('IN_TG',true);
+require ('./include/mysql_connect.php');
 logincheck();
-?>
-
-<?php
-include ('./includes/header.html');
-?>
-
-<?php
-require_once ('./includes/menu.php');
-?>				
-						 
-<?php 
-require_once ('./softs_common.php');
-?>
-
-<?php
-include ('./includes/footer.html');
+include ('./include/header.html');
+require ('./include/menu.php');
+require ('./control.php');
+include ('./include/footer.html');
 ?>

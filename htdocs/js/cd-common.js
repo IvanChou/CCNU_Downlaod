@@ -38,8 +38,7 @@
 	}
 	
 	function scroll_notice () {
-		var h = $("#notice").find("p").height(),top,i;
-		var t;
+		var h = $("#notice").find("p").height(),top,i,t;
 		i = parseInt(h/111);
 		t = p_scroll();
 		
@@ -92,6 +91,25 @@
 	function set_footer () {
 		var window_height = window.innerHeight;
 		$("body").css("min-height",window_height);
+	}
+	
+	function set_rank () {
+		var ranks = $("#rank").find("li").toArray();
+		for (var x in ranks) {
+			switch (x){
+				case '0' : $(ranks[x]).css("background-position","-539px -135px");
+					break;
+				case '1' : $(ranks[x]).css("background-position","-539px -163px");
+					break;
+				case '2' : $(ranks[x]).css("background-position","-539px -191px");
+					break;
+				case '3' : $(ranks[x]).css("background-position","-539px -219px");
+					break;
+				case '4' : $(ranks[x]).css("background-position","-539px -247px");
+					break;
+				default : $(ranks[x]).css("background-position","-539px -275px");
+			}
+		}
 	}
 	
 	function search () {
@@ -194,6 +212,7 @@
 	
 	$(document).ready(function(){
 		set_footer();
+		set_rank();
 		show_needs();
 		hover_often();
 		search();

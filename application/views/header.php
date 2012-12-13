@@ -6,10 +6,8 @@
 		<meta name="description" content="华中师范大学软件下载中心(网络中心)">
 		<link rel="stylesheet" href="<?=$site_url ?>style/blackbox.css" type="text/css" media="all">
 		<link rel="stylesheet" href="<?=$site_url ?>style/style.css" type="text/css" media="all">
-		<!--[if lt IE 7]>
-			<script src="<?=$site_url ?>js/iepngfix.js"></script>
-			<link rel="stylesheet" href="<?=$site_url ?>style/ie6.css" type="text/css" media="all">
-		<![endif]-->
+		<!--[if lt IE 8]><link rel="stylesheet" href="<?=$site_url ?>style/ie6.css" type="text/css" media="all"><![endif]-->
+		<!--[if lt IE 7]><script src="<?=$site_url ?>js/iepngfix.js"></script><![endif]-->
 	</head>
 
 	<body>

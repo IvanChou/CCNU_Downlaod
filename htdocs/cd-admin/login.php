@@ -1,8 +1,9 @@
 <?php
 session_start();
+define('IN_TG',true);
 //header告诉浏览器采用utf8形式编码，否则在ie下alert对话框弹不出来
 header("content-type:text/html; charset=utf-8");
-require_once ("./includes/mysql_connect.php");
+require_once ("./include/mysql_connect.php");
 if(isset($_POST['submit'])){
 	$name = escape_data(trim($_POST['name']));
 	$password = md5(escape_data(trim($_POST['password'])));  
@@ -12,7 +13,7 @@ if(isset($_POST['submit'])){
 	mysql_query("set names utf8");
 	$result = mysql_query($sql) or die(mysql_error());
 	if(!(empty($imgcode)||empty($name)||empty($password))){
-		if($imgcode==$myimagecode){
+		if(strtoupper($imgcode)==strtoupper($myimagecode)){
 			$numrows = mysql_num_rows($result);
 			if($numrows==1){
 				$row = mysql_fetch_assoc($result);
@@ -31,38 +32,36 @@ if(isset($_POST['submit'])){
 }else{
 ?>
 <?php
-include_once ('./includes/login_header.html');
+include_once ('./include/login_header.html');
 ?>
 <script language="javascript">
-function CheckPost()
-{
-	var  name = document.forms["login-form"].elements["login"].value;
-	var  password = document.forms["login-form"].elements["password"].value;
-	var  imgcode = document.forms["login-form"].elements["yanzhengma"].value;
-	if (name=="")
-	{
+<!--
+function CheckPost(){
+	var  username = document.getElementById('username').value;
+	var  password = document.getElementById('password').value;
+	var  code = document.getElementById('yanzhengma').value
+	if (username==""){
 		alert("请输入用户名！");
-		document.forms["login-form"].elements["login"].focus();
+		document.getElementById('username').focus();
 		return false;
 	}
-	if (password=="")
-	{
+	if (password==""){
 		alert("请输入密码！");
-		document.forms["login-form"].elements["password"].focus();
+		document.getElementById('password').focus();
 		return false;
 	}
-	if (imgcode=="")
-	{
+	if (code==""){
 		alert("请输入验证码！");
-		document.forms["login-form"].elements["yanzhengma"].focus();
+		document.getElementById('yanzhengma').focus();
 		return false;
 	}
 }
+-->
 </script>
-<form id="login-form" name="form1" action="<?php echo $_SERVER['SCRIPT_NAME']; ?>" method="post" onsubmit="return CheckPost();">
+<form id="login-form" name="formlogin" action="<?php echo $_SERVER['SCRIPT_NAME']; ?>" method="post" onsubmit="return CheckPost();">
 <p>
 <label>用户名</label>
-<input class="text-input" id="login" type="text"  name="name" value="<?php if (isset($_POST['name'])) echo $_POST['name']; ?>"/>
+<input class="text-input" id="username" type="text"  name="name" value="<?php if (isset($_POST['name'])) echo $_POST['name']; ?>"/>
 </p>
 <div class="clear"></div>
 
@@ -74,11 +73,12 @@ function CheckPost()
 
 <p>
 <label>验证码</label>
-<img src="code.php" alt="看不清？请点一下！" onclick="this.src='code.php?'+Math.random()"/><input type="text" name="imgcode" class="text-input" id="yanzhengma" value="<?php if (isset($_POST['imgcode'])) echo $_POST['imgcode']; ?>" />
+<img src="./include/code.php" alt="看不清？请点一下！" onclick="this.src='./include/code.php?'+Math.random()" /><input type="text" name="imgcode" class="text-input" id="yanzhengma" value="<?php if (isset($_POST['imgcode'])) echo $_POST['imgcode']; ?>" onkeyup="if(this.value!=this.value.toUpperCase()) this.value=this.value.toUpperCase()"/>
 </p>
 <div class="clear"></div>
 
 <p>
+<input class="button" type="reset" name="reset" value="重&nbsp;置" />
 <input class="button" type="submit" name="submit" value="登&nbsp;录" />
 </p>
 </form>
@@ -87,5 +87,5 @@ function CheckPost()
 }
 ?>
 <?php
-include_once ('./includes/login_footer.html');
+include_once ('./include/login_footer.html');
 ?>

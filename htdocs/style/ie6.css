@@ -9,14 +9,14 @@ License URI: http://www.gnu.org/licenses/gpl-2.0.html
 html {font-family: Arial, sans-serif;}
 	
 h2 {background: url(../images/cd-icon-ie6.png) -738px -127px no-repeat;}
-h4 {font-size: 100%;}
+h4 {font-size: 100%;cursor: pointer;}
 
 /* header defines begin*/
 .banner-bg {width: 960px;}
 .logo {behavior: url(../style/iepngfix.htc);}
 .header hr {width: 694px;height:4px;color: white;display: block;}
 #search {margin-top: -43px;behavior: url(../style/iepngfix.htc);float: right;}
-input#keywords {margin: 0 1px 0 16px;}
+input#keywords {_margin: 0 1px 0 16px;}
 /* header defines end*/
 
 /* wrapper defines begin*/
