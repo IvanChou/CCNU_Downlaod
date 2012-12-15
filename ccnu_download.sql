@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 3.5.3
+-- version 3.5.0-rc1
 -- http://www.phpmyadmin.net
 --
 -- 主机: localhost
--- 生成日期: 2012 年 12 月 12 日 10:27
--- 服务器版本: 5.0.91-community-nt
--- PHP 版本: 5.2.13
+-- 生成日期: 2012 年 12 月 15 日 15:14
+-- 服务器版本: 5.1.61-community
+-- PHP 版本: 5.2.17
 
 SET SQL_MODE="NO_AUTO_VALUE_ON_ZERO";
 SET time_zone = "+00:00";
@@ -27,10 +27,10 @@ SET time_zone = "+00:00";
 --
 
 CREATE TABLE IF NOT EXISTS `cd_admin` (
-  `ID` bigint(6) unsigned NOT NULL auto_increment,
+  `ID` bigint(6) unsigned NOT NULL AUTO_INCREMENT,
   `admin_name` varchar(16) NOT NULL,
-  `admin_pass` varchar(64) NOT NULL default '49ba59abbe56e057' COMMENT 'MD5 16进制加密',
-  PRIMARY KEY  (`ID`)
+  `admin_pass` varchar(64) NOT NULL DEFAULT '49ba59abbe56e057' COMMENT 'MD5 16进制加密',
+  PRIMARY KEY (`ID`)
 ) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=8 ;
 
 --
@@ -51,15 +51,15 @@ INSERT INTO `cd_admin` (`ID`, `admin_name`, `admin_pass`) VALUES
 --
 
 CREATE TABLE IF NOT EXISTS `cd_comments` (
-  `com_id` bigint(6) unsigned NOT NULL auto_increment,
-  `user_num` bigint(8) unsigned default NULL,
-  `user_name` varchar(12) character set utf8 NOT NULL,
-  `com_time` datetime NOT NULL default '0000-00-00 00:00:00',
-  `com_text` text character set utf8 NOT NULL,
+  `com_id` bigint(6) unsigned NOT NULL AUTO_INCREMENT,
+  `user_num` bigint(8) unsigned DEFAULT NULL,
+  `user_name` varchar(12) CHARACTER SET utf8 NOT NULL,
+  `com_time` datetime NOT NULL DEFAULT '0000-00-00 00:00:00',
+  `com_text` text CHARACTER SET utf8 NOT NULL,
   `soft_id` bigint(6) unsigned NOT NULL,
-  PRIMARY KEY  (`com_id`),
+  PRIMARY KEY (`com_id`),
   KEY `FK_soft_ids` (`soft_id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=armscii8 AUTO_INCREMENT=19 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=armscii8 AUTO_INCREMENT=20 ;
 
 --
 -- 转存表中的数据 `cd_comments`
@@ -74,7 +74,8 @@ INSERT INTO `cd_comments` (`com_id`, `user_num`, `user_name`, `com_time`, `com_t
 (9, 2009213663, '胡一刀', '2012-11-24 02:46:13', '抢个沙发~', 41),
 (13, 2009213663, '我晕', '2012-12-07 08:14:02', '这个太差了', 42),
 (17, 2009213663, '啊啊', '2012-12-08 12:02:26', '啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊', 40),
-(18, 2009213663, 'alvin', '2012-12-10 10:45:30', '= =(凑字数)', 42);
+(18, 2009213663, 'alvin', '2012-12-10 10:45:30', '= =(凑字数)', 42),
+(19, 2009213663, '呵呵', '2012-12-13 06:06:08', '呵呵复呵呵，呵呵何其多~', 48);
 
 -- --------------------------------------------------------
 
@@ -83,19 +84,19 @@ INSERT INTO `cd_comments` (`com_id`, `user_num`, `user_name`, `com_time`, `com_t
 --
 
 CREATE TABLE IF NOT EXISTS `cd_downlog` (
-  `ID` bigint(6) unsigned NOT NULL auto_increment,
-  `downer_ip` char(16) NOT NULL default '000.000.000.000',
-  `down_time` datetime default '0000-00-00 00:00:00',
+  `ID` bigint(6) unsigned NOT NULL AUTO_INCREMENT,
+  `downer_ip` char(16) NOT NULL DEFAULT '000.000.000.000',
+  `down_time` datetime DEFAULT '0000-00-00 00:00:00',
   `down_soft` bigint(6) unsigned NOT NULL,
-  `downer_bs` varchar(20) NOT NULL,
-  `downer_os` varchar(20) NOT NULL,
-  `down_speed` int(6) unsigned default NULL COMMENT '单位:KB/s',
-  `soft_appraise` tinyint(1) NOT NULL default '0' COMMENT '踩:-1 缺省:0 顶:1',
-  `soft_viru` tinyint(1) unsigned NOT NULL default '0' COMMENT '举报有毒:1 缺省:0',
-  `soft_null` tinyint(1) unsigned NOT NULL default '0' COMMENT '举报无效:1 缺省:0',
-  PRIMARY KEY  (`ID`),
+  `downer_bs` varchar(30) NOT NULL,
+  `downer_os` varchar(30) NOT NULL,
+  `down_speed` int(6) unsigned DEFAULT NULL COMMENT '单位:KB/s',
+  `soft_appraise` tinyint(1) NOT NULL DEFAULT '0' COMMENT '踩:-1 缺省:0 顶:1',
+  `soft_viru` tinyint(1) unsigned NOT NULL DEFAULT '0' COMMENT '举报有毒:1 缺省:0',
+  `soft_null` tinyint(1) unsigned NOT NULL DEFAULT '0' COMMENT '举报无效:1 缺省:0',
+  PRIMARY KEY (`ID`),
   KEY `down_soft` (`down_soft`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=103 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=106 ;
 
 --
 -- 转存表中的数据 `cd_downlog`
@@ -173,12 +174,12 @@ INSERT INTO `cd_downlog` (`ID`, `downer_ip`, `down_time`, `down_soft`, `downer_b
 (93, '10.144.82.135', '2012-12-07 08:28:04', 45, 'Chrome 23.0.1271.95', 'Linux', NULL, -1, 0, 0),
 (94, '10.144.82.135', '2012-12-07 08:28:40', 45, 'Chrome 23.0.1271.95', 'Linux', NULL, 1, 0, 0),
 (95, '10.144.84.143', '2012-12-07 11:57:21', 46, 'Firefox 17.0', 'Windows XP', NULL, 0, 0, 0),
-(96, '10.144.84.143', '2012-12-07 11:59:24', 47, 'Chrome 16.0.912.63', 'Windows XP', NULL, 0, 0, 0),
-(97, '10.144.84.143', '2012-12-08 12:01:24', 47, 'Chrome 16.0.912.63', 'Windows XP', NULL, 0, 0, 0),
-(98, '10.144.84.143', '2012-12-08 12:01:28', 47, 'Chrome 16.0.912.63', 'Windows XP', NULL, 0, 0, 0),
 (99, '10.144.82.135', '2012-12-08 12:48:52', 45, 'Chrome 23.0.1271.95', 'Linux', NULL, 0, 0, 0),
 (100, '192.168.130.40', '2012-12-10 06:03:09', 42, 'Internet Explorer 6.', 'Windows XP', NULL, 0, 0, 0),
-(102, '10.144.115.233', '2012-12-10 10:51:49', 42, 'Chrome 22.0.1229.94', 'Windows 7', NULL, 0, 0, 0);
+(102, '10.144.115.233', '2012-12-10 10:51:49', 42, 'Chrome 22.0.1229.94', 'Windows 7', NULL, 0, 0, 0),
+(103, '202.114.40.37', '2012-12-13 06:05:21', 48, 'Chrome 23.0.1271.97', 'Linux', NULL, 0, 0, 0),
+(104, '202.114.40.48', '2012-12-13 08:24:29', 41, 'Chrome 23.0.1271.95', 'Windows XP', NULL, 0, 0, 0),
+(105, '202.114.40.48', '2012-12-13 08:24:32', 41, 'Chrome 23.0.1271.95', 'Windows XP', NULL, 1, 0, 0);
 
 -- --------------------------------------------------------
 
@@ -187,25 +188,25 @@ INSERT INTO `cd_downlog` (`ID`, `downer_ip`, `down_time`, `down_soft`, `downer_b
 --
 
 CREATE TABLE IF NOT EXISTS `cd_softs` (
-  `ID` bigint(6) unsigned NOT NULL auto_increment,
+  `ID` bigint(6) unsigned NOT NULL AUTO_INCREMENT,
   `soft_name` varchar(40) NOT NULL,
   `soft_url` varchar(100) NOT NULL COMMENT '需以 http:// 开头',
   `term_id` bigint(6) unsigned NOT NULL,
   `tag_id` bigint(6) unsigned NOT NULL,
-  `post_time` datetime NOT NULL default '0000-00-00 00:00:00',
+  `post_time` datetime NOT NULL DEFAULT '0000-00-00 00:00:00',
   `soft_description` text NOT NULL,
   `soft_size` int(8) unsigned NOT NULL COMMENT '单位:KB',
   `soft_os` varchar(30) NOT NULL,
-  `soft_img` varchar(40) default NULL COMMENT '需以 http:// 开头',
-  `down_count` bigint(6) unsigned NOT NULL default '0',
-  `downer_top_count` bigint(6) NOT NULL default '0' COMMENT '被顶次数',
-  `downer_down_count` bigint(6) NOT NULL default '0' COMMENT '被踩次数',
-  `downer_viru_count` bigint(6) unsigned NOT NULL default '0' COMMENT '被报毒次数',
-  `downer_null_count` bigint(6) unsigned NOT NULL default '0' COMMENT '报告文件无效次数',
-  PRIMARY KEY  (`ID`),
+  `soft_img` varchar(40) DEFAULT NULL COMMENT '需以 http:// 开头',
+  `down_count` bigint(6) unsigned NOT NULL DEFAULT '0',
+  `downer_top_count` bigint(6) NOT NULL DEFAULT '0' COMMENT '被顶次数',
+  `downer_down_count` bigint(6) NOT NULL DEFAULT '0' COMMENT '被踩次数',
+  `downer_viru_count` bigint(6) unsigned NOT NULL DEFAULT '0' COMMENT '被报毒次数',
+  `downer_null_count` bigint(6) unsigned NOT NULL DEFAULT '0' COMMENT '报告文件无效次数',
+  PRIMARY KEY (`ID`),
   KEY `FK_softs_terms` (`term_id`),
   KEY `FK_softs_tags` (`tag_id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=50 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=51 ;
 
 --
 -- 转存表中的数据 `cd_softs`
@@ -213,13 +214,13 @@ CREATE TABLE IF NOT EXISTS `cd_softs` (
 
 INSERT INTO `cd_softs` (`ID`, `soft_name`, `soft_url`, `term_id`, `tag_id`, `post_time`, `soft_description`, `soft_size`, `soft_os`, `soft_img`, `down_count`, `downer_top_count`, `downer_down_count`, `downer_viru_count`, `downer_null_count`) VALUES
 (40, '一键Ghost', 'cd-resource/53/20121117151347_9565.zip', 53, 213, '2012-11-17 15:13:47', '一键还原精灵，是一款傻瓜式的系统备份和还原工具。它具有安全、快速、保密性强、压缩率高、兼容性好等特点，特别适合电脑新手和担心操作麻烦的人使用。', 254688, 'win', 'cd-resource/53/20121117151347_9565.jpg', 54, 15, 8, 0, 0),
-(41, '驱动精灵2012 SP5 6.1.1018 官方版', 'cd-resource/53/20121117152459_4446.zip', 53, 213, '2012-11-17 15:24:59', '<span style="color: rgb(119, 119, 119); font-family: 宋体; font-size: 12px; line-height: 24px; background-color: rgb(255, 255, 255);">驱动精灵2012官方版革命性的新增了硬件设备问题判别的功能与相应算法，驱动精灵2012官方版幅增强了硬件识别能力，本站提供驱动精灵2012官网下载。</span>', 254688, 'win', 'cd-resource/53/20121117152459_4446.jpg', 13, 2, 0, 0, 0),
+(41, '驱动精灵2012 SP5 6.1.1018 官方版', 'cd-resource/53/20121117152459_4446.zip', 53, 213, '2012-11-17 15:24:59', '<span style="color: rgb(119, 119, 119); font-family: 宋体; font-size: 12px; line-height: 24px; background-color: rgb(255, 255, 255);">驱动精灵2012官方版革命性的新增了硬件设备问题判别的功能与相应算法，驱动精灵2012官方版幅增强了硬件识别能力，本站提供驱动精灵2012官网下载。</span>', 254688, 'win', 'cd-resource/53/20121117152459_4446.jpg', 15, 3, 0, 0, 0),
 (42, 'Windows优化大师 免费版 7.99 官方正式版', 'cd-resource/53/20121117152638_2663.zip', 53, 198, '2012-11-17 15:26:38', '<span style="color: rgb(119, 119, 119); font-family: 宋体; font-size: 12px; line-height: 22px; background-color: rgb(255, 255, 255);">Windows优化大师是功能强大的Windows系统优化辅助软件，Windows优化大师提供全面有效且简便安全的系统优化，本站提供优化大师免费下载、优化大师官方下载。</span>', 254688, 'win', 'cd-resource/53/20121117152638_2663.png', 14, 3, 1, 0, 0),
-(45, 'QQ', 'cd-resource/52/20121207202335_6160.jpg', 52, 193, '2012-12-07 20:23:35', '啊啊啊啊', 107957, 'win', NULL, 3, 1, 1, 0, 0),
-(46, '1234', 'cd-resource/56/20121207235227_6465.txt', 56, 203, '2012-12-07 23:52:27', 'rrrrr', 3, 'dddd', NULL, 1, 0, 0, 0, 0),
-(47, 'http', 'cd-resource/57/20121207235811_8398.jpg', 57, 207, '2012-12-07 23:58:11', 'hhh', 15904, 'xp', 'cd-resource/57/20121207235811_8398.jpg', 3, 0, 0, 0, 0),
-(48, 'Notepad++ 6.2.2 官方正式版', 'cd-resource/58/20121208000211_7843.zip', 58, 209, '2012-12-08 00:02:11', '<div>Notepad++ 是在微軟視窗環境之下的一個免費的代碼編輯器。</div><div>了產生小巧且有效率的代碼編輯器，這個在 GPL 許可證下的自由軟體開發專案採用 win32 api 和 STL 以 C++ 程式語言撰寫成，並且選用功能強大的編輯模組 Scintilla.</div><div>藉由加強與優化許多函數及演算法，Notepad++ 致力於減少世界二氧化碳的排放。當使</div><div>用較少的 CPU 功率，降低電腦系統能源消耗，Notepad++ 間接造就了綠化的環境。多虧它的輕巧與執行效率，Notepad++ 可完美地取代微軟視窗的記事本。</div>', 50688, 'windows', 'cd-resource/58/20121208000211_7843.png', 0, 0, 0, 0, 0),
-(49, '上传测试', 'cd-resource/58/20121210212116_1752.psd', 58, 209, '2012-12-10 21:21:16', '&nbsp;水水水水水', 2328243, 'Win', 'cd-resource/58/20121210212116_1752.jpg', 0, 0, 0, 0, 0);
+(45, 'QQ', 'cd-resource/52/20121207202335_6160.jpg', 52, 193, '2012-12-07 20:23:35', '啊啊啊啊', 107930, 'win', 'cd-resource/52/20121207202335_6160.jpg', 3, 1, 1, 0, 0),
+(46, '1234', 'cd-resource/56/20121207235227_6465.txt', 56, 203, '2012-12-07 23:52:27', 'rrrrr', 3, 'dddd', 'cd-resource/56/20121207235227_6465.jpg', 1, 0, 0, 0, 0),
+(48, 'Notepad++ 6.2.2 官方正式版', 'cd-resource/58/20121208000211_7843.zip', 58, 209, '2012-12-08 00:02:11', '<div>Notepad++ 是在微軟視窗環境之下的一個免費的代碼編輯器。</div><div>了產生小巧且有效率的代碼編輯器，這個在 GPL 許可證下的自由軟體開發專案採用 win32 api 和 STL 以 C++ 程式語言撰寫成，並且選用功能強大的編輯模組 Scintilla.</div><div>藉由加強與優化許多函數及演算法，Notepad++ 致力於減少世界二氧化碳的排放。當使</div><div>用較少的 CPU 功率，降低電腦系統能源消耗，Notepad++ 間接造就了綠化的環境。多虧它的輕巧與執行效率，Notepad++ 可完美地取代微軟視窗的記事本。</div>', 50688, 'windows', 'cd-resource/58/20121208000211_7843.png', 1, 0, 0, 0, 0),
+(49, '上传测试', 'cd-resource/58/20121210212116_1752.psd', 58, 209, '2012-12-10 21:21:16', '&nbsp;水水水水水', 2328243, 'Win', 'cd-resource/58/20121210212116_1752.jpg', 0, 0, 0, 0, 0),
+(50, '驱动人生', 'cd-resource/57/20121212144108_7297.psd', 57, 207, '2012-12-12 22:41:08', '驱动人生<br type="_moz" />', 0, 'Win', 'cd-resource/57/20121212144108_7297.jpg', 0, 0, 0, 0, 0);
 
 -- --------------------------------------------------------
 
@@ -228,12 +229,12 @@ INSERT INTO `cd_softs` (`ID`, `soft_name`, `soft_url`, `term_id`, `tag_id`, `pos
 --
 
 CREATE TABLE IF NOT EXISTS `cd_tags` (
-  `tag_id` bigint(6) unsigned NOT NULL auto_increment,
+  `tag_id` bigint(6) unsigned NOT NULL AUTO_INCREMENT,
   `tag_name` varchar(10) NOT NULL,
   `tag_rank` bigint(6) unsigned NOT NULL,
   `tag_parent` bigint(6) unsigned NOT NULL,
-  `down_count` bigint(6) unsigned NOT NULL default '0',
-  PRIMARY KEY  (`tag_id`),
+  `down_count` bigint(6) unsigned NOT NULL DEFAULT '0',
+  PRIMARY KEY (`tag_id`),
   KEY `FK_tags_terms` (`tag_parent`)
 ) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=214 ;
 
@@ -255,8 +256,8 @@ INSERT INTO `cd_tags` (`tag_id`, `tag_name`, `tag_rank`, `tag_parent`, `down_cou
 (206, '国外杀毒软件', 4, 56, 0),
 (207, '校园网客户端', 1, 57, 3),
 (208, '修电脑的', 3, 53, 7),
-(209, 'windows', 1, 58, 0),
-(213, '装电脑的', 1, 53, 60);
+(209, 'windows', 1, 58, 1),
+(213, '装电脑的', 1, 53, 62);
 
 -- --------------------------------------------------------
 
@@ -265,11 +266,11 @@ INSERT INTO `cd_tags` (`tag_id`, `tag_name`, `tag_rank`, `tag_parent`, `down_cou
 --
 
 CREATE TABLE IF NOT EXISTS `cd_terms` (
-  `term_id` bigint(6) unsigned NOT NULL auto_increment,
+  `term_id` bigint(6) unsigned NOT NULL AUTO_INCREMENT,
   `term_name` varchar(10) NOT NULL,
   `term_rank` bigint(6) unsigned NOT NULL,
   `down_count` bigint(6) unsigned NOT NULL,
-  PRIMARY KEY  (`term_id`)
+  PRIMARY KEY (`term_id`)
 ) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=60 ;
 
 --
@@ -279,12 +280,11 @@ CREATE TABLE IF NOT EXISTS `cd_terms` (
 INSERT INTO `cd_terms` (`term_id`, `term_name`, `term_rank`, `down_count`) VALUES
 (49, '聊天工具', 7, 5),
 (52, '学习天地', 2, 3),
-(53, '系统工具', 1, 91),
+(53, '系统工具', 1, 93),
 (55, '网络安全', 4, 0),
 (56, '媒体工具', 6, 3),
 (57, '驱动下载', 3, 3),
-(58, '网络工具', 4, 0),
-(59, '缓存测试', 1, 0);
+(58, '网络工具', 4, 1);
 
 --
 -- 限制导出的表

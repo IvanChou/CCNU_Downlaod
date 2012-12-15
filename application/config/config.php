@@ -14,7 +14,7 @@
 | path to your installation.
 |
 */
-$config['base_url']	= 'http://218.199.196.7/';
+$config['base_url']	= 'http://www.ccnudown.ic/';
 
 /*
 |--------------------------------------------------------------------------
