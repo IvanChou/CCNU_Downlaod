@@ -1,4 +1,5 @@
 <?php
+header('Content-Type:text/html;Charset=utf-8');
 define('IN_TG',true);
 define('BASEPATH',true);
 require_once ('../../../application/config/home.php');

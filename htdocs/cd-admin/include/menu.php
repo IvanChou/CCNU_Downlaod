@@ -12,7 +12,7 @@ if (isset($_REQUEST['action'])) {
 <div id="profile-links">
 你好， <?php echo $_SESSION['USERNAME']; ?>
 <br />
-<a target="_blank" href="http://218.199.196.7" title="访问前台页面">访问前台网站</a> | <a href="./index.php?action=logout" title="退出">退出</a>
+<a target="_blank" href="http://218.199.196.11" title="访问前台页面">访问前台网站</a> | <a href="./index.php?action=logout" title="退出">退出</a>
 </div>
      
 <!---------------------------------------------------#main-nav ----------------------------------------------------------->

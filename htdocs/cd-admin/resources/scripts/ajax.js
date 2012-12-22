@@ -4,41 +4,31 @@ function Ajax(recvType){
 	aj.targetUrl='';
 	aj.sendString='';
 	aj.resultHandle=null;
-
 	aj.createXMLHttpRequest=function(){
-		var request=false;
-		
-		//window对象中有XMLHttpRequest存在就是非IE，包括（IE7，IE8）
-		if(window.XMLHttpRequest){
-			request=new XMLHttpRequest();
-
-			if(request.overrideMimeType){
-				request.overrideMimeType("text/xml");
-			}
-		
-
-		//window对象中有ActiveXObject属性存在就是IE
-		}else if(window.ActiveXObject){
-			
-			var versions=['Microsoft.XMLHTTP', 'MSXML.XMLHTTP', 'Msxml2.XMLHTTP.7.0','Msxml2.XMLHTTP.6.0','Msxml2.XMLHTTP.5.0', 'Msxml2.XMLHTTP.4.0', 'MSXML2.XMLHTTP.3.0', 'MSXML2.XMLHTTP'];
-
-			for(var i=0; i<versions.length; i++){
-					try{
-						request=new ActiveXObject(versions[i]);
-
-						if(request){
-							return request;
-						}
-					}catch(e){
-						request=false;
-					}
+	var request=false;	
+	//window对象中有XMLHttpRequest存在就是非IE，包括（IE7，IE8）
+	if(window.XMLHttpRequest){
+		request=new XMLHttpRequest();
+		if(request.overrideMimeType){
+			request.overrideMimeType("text/xml");
+		}
+	//window对象中有ActiveXObject属性存在就是IE
+	}else if(window.ActiveXObject){
+		var versions=['Microsoft.XMLHTTP', 'MSXML.XMLHTTP', 'Msxml2.XMLHTTP.7.0','Msxml2.XMLHTTP.6.0','Msxml2.XMLHTTP.5.0', 'Msxml2.XMLHTTP.4.0', 'MSXML2.XMLHTTP.3.0', 'MSXML2.XMLHTTP'];
+		for(var i=0; i<versions.length; i++){
+			try{
+				request=new ActiveXObject(versions[i]);
+				if(request){
+					return request;
+				}
+			}catch(e){
+				request=false;
 			}
 		}
+	}
 		return request;
 	}
-
 	aj.XMLHttpRequest=aj.createXMLHttpRequest();
-
 	aj.processHandle=function(){
 		if(aj.XMLHttpRequest.readyState == 4){
 			if(aj.XMLHttpRequest.status == 200){
@@ -51,9 +41,8 @@ function Ajax(recvType){
 	}
 
 	aj.get=function(targetUrl, resultHandle){
-		//ie中ajax缓存问题
-		aj.targetUrl=targetUrl+"&timestamp=" + new Date().getTime();	
-		
+		//aj.targetUrl=targetUrl;	
+		aj.targetUrl=targetUrl+"&timestamp=" + new Date().getTime();
 		if(resultHandle!=null){
 			aj.XMLHttpRequest.onreadystatechange=aj.processHandle;	
 			aj.resultHandle=resultHandle;	
@@ -65,12 +54,10 @@ function Ajax(recvType){
 			aj.XMLHttpRequest.open("get", aj.targetUrl, true);
 			aj.XMLHttpRequest.send();
 		}
-		
 	}
 
 	aj.post=function(targetUrl, sendString, resultHandle){
 		aj.targetUrl=targetUrl;
-
 		if(typeof(sendString)=="object"){
 			var str="";
 			for(var pro in sendString){
@@ -80,17 +67,13 @@ function Ajax(recvType){
 		}else{
 			aj.sendString=sendString;
 		}
-
 		if(resultHandle!=null){
 			aj.XMLHttpRequest.onreadystatechange=aj.processHandle;	
 			aj.resultHandle=resultHandle;	
 		}
-
 		aj.XMLHttpRequest.open("post", targetUrl);
 		aj.XMLHttpRequest.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
 		aj.XMLHttpRequest.send(aj.sendString);
-		
 	}
-
 	return aj;
 }

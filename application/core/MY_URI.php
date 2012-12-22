@@ -8,8 +8,8 @@ class MY_URI extends CI_URI {
 			if (!preg_match("|^[" . str_replace(array('\\-', '\-'), '-', preg_quote($this -> config -> item('permitted_uri_chars'), '-')) . "]+$|i", $str)) {
 				show_error('The URI you submitted has disallowed characters.', 400);
 			}
-			
-			$str = urldecode($str);// 增加的代码 for Ngnix
+
+			$str = rawurldecode($str);// 增加的代码
 		}
 
 		// Convert programatic characters to entities

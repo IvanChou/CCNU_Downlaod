@@ -44,7 +44,7 @@ class Page{
 		
 	}
 	
-	private function __get($args){
+	public function __get($args){
 		if($args=="limit"){
 			return $this->limit;
 		}else{

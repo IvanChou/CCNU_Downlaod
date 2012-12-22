@@ -1,4 +1,5 @@
 <?php
+header('Content-Type:text/html;Charset=utf-8');
 define('IN_TG',true);
 session_start();
 require '../include/mysql_connect.php';

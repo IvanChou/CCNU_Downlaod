@@ -25,47 +25,58 @@ if($soft_os=="1"){
 }
 //http上传
 if($addtype=='http'){
-	if($_FILES['upload']['tmp_name']!=''){
-		if(!empty($soft_name)&&!empty($desc)&&!empty($soft_os)&&($term != 0)&&($tag != 0)){
-			require_once ('../include/class.HttpUpload.php');
-			$upload = new Upload(array('uploadPath'=>'../../cd-resource/'.$term.''));
-	        $upload->fileUpload($_FILES['upload'],$soft_name,$soft_os,$desc,$term,$tag);
-	        $error = $upload->getStatus();
-	        $upload_id = $upload->getId();
-	
-	        $dest_dir = '../../cd-resource/'.$term;   //设定上传目录
-	        $dest_dir2 = 'cd-resource/'.$term;
-			
-			if($_FILES['soft_pic']['tmp_name']!=''){
-				$arr = explode('.',$_FILES['soft_pic']['name']); //分割文件名
-                $file_extend = end($arr); //取数组中的最后一个值
-		        $sql4 = 'select soft_url from `cd_softs` where ID = '.$upload_id;
-		        $result4 = mysql_query($sql4) or die(mysql_error());
-		        $row4 = mysql_fetch_assoc($result4);
-		        $imgnewname = split("\.|/",$row4['soft_url']);
+	if(!empty($soft_name)&&!empty($desc)&&!empty($soft_os)&&($term != 0)&&($tag != 0)){
+		require_once ('../include/FileUpload.class.php');
+		$upload = new FileUpload(array('filepath'=>'../../cd-resource/'.$term.'/','allowtype'=>array('gif','jpg','png','bmp','exe','wmv','txt','avi','rmvb','psd','doc','rar','zip','7z','msi','lzh')));
+		if($upload->uploadFile('upload')){
+			$filename = $upload->getNewFileName();
+			$size = $upload->getFileSize();
+			$url = "cd-resource/$term/$filename";
+			$query = "INSERT INTO `cd_softs` (soft_name, soft_os,soft_url,term_id,tag_id,soft_size,soft_description,post_time) VALUES ('$soft_name','$soft_os','$url',$term,$tag,$size, '$desc',now())";
+			mysql_query("set names utf8");
+			$result = mysql_query($query) or die(mysql_error());
+			$upload_id = mysql_insert_id();
+			if($result){
+				$dest_dir = '../../cd-resource/'.$term;   //设定上传目录
+				$dest_dir2 = 'cd-resource/'.$term;
+				if($_FILES['soft_pic']['tmp_name']!=''){
+					$arr = explode('.',$_FILES['soft_pic']['name']); //分割文件名
+					$file_extend = end($arr); //取数组中的最后一个值
+					$sql4 = 'select soft_url from `cd_softs` where ID = '.$upload_id;
+					$result4 = mysql_query($sql4) or die(mysql_error());
+					$row4 = mysql_fetch_assoc($result4);
+					$imgnewname = split("\.|/",$row4['soft_url']);
 		
-		        $file_newname = $dest_dir.'/'.$imgnewname[2].'.'.$file_extend;
-		        $file_newname2 = $dest_dir2.'/'.$imgnewname[2].'.'.$file_extend;
-				if($_FILES['soft_pic']['type'] == 'image/jpeg'||$_FILES['soft_pic']['type'] == 'image/pjpeg'||$_FILES['soft_pic']['type'] == 'image/png'||$_FILES['soft_pic']['type'] == 'image/gif'){
-					if (move_uploaded_file($_FILES['soft_pic']['tmp_name'], $file_newname)){
-						$sql3 = "update `cd_softs` set soft_img = '$file_newname2' where ID = ".$upload_id;
-						$result3 = mysql_query($sql3) or die(mysql_error());
-						if(!$result3){
-							@unlink($file_newname);
+					$file_newname = $dest_dir.'/'.$imgnewname[2].'.'.$file_extend;
+					$file_newname2 = $dest_dir2.'/'.$imgnewname[2].'.'.$file_extend;
+					if($_FILES['soft_pic']['type'] == 'image/jpeg'||$_FILES['soft_pic']['type'] == 'image/pjpeg'||$_FILES['soft_pic']['type'] == 'image/png'||$_FILES['soft_pic']['type'] == 'image/gif'){
+						if (move_uploaded_file($_FILES['soft_pic']['tmp_name'], $file_newname)){
+							$sql3 = "update `cd_softs` set soft_img = '$file_newname2' where ID = ".$upload_id;
+							$result3 = mysql_query($sql3) or die(mysql_error());
+							if(!$result3){
+								@unlink($file_newname);
+							}
 						}
+					}else{
+						echo "<script language='javascript'>alert('软件上传成功！软件图标格式不对，图标上传失败！');location.href='../index.php?title=soft&list=view';</script>";
+						break;
 					}
-				}else{
-					echo "<script language='javascript'>alert('上传的图标只能是jpg，gif或png格式！');location.href='../index.php?title=soft&list=softadd';</script>";
-					break;
 				}
+				echo "<script language='javascript'>alert('软件上传成功！');location.href='../index.php?title=soft&list=view';</script>";
+				break;
+			}else{
+				@unlink('../../'.$url);
+				echo "<script language='javascript'>alert('往数据库添加记录失败！软件没有上传！');location.href='../index.php?title=soft&list=view';</script>";
+				break;
 			}
+		}else{
+			$error = $upload->getErrorMsg();
+			echo "<script language='javascript'>alert(\"$error\");location.href='../index.php?title=soft&list=view';</script>";
+			break;
 		}
 	}else{
-		echo "<script language='javascript'>alert(\"请选择上传的软件！\");location.href='../index.php?title=soft&list=softadd';</script>";
+		echo "<script language='javascript'>alert('忘了填写软件名或是软件描述？！');location.href='../index.php?title=soft&list=softadd';</script>";
 		break;
-	}
-	foreach($error as $key =>$value){
-		echo "<script language='javascript'>alert(\"$value\");location.href='../index.php?title=soft&list=view';</script>";
 	}
 }else{
     //ftp上传开始
