@@ -5,13 +5,6 @@ class Page extends CI_Controller {
 	public function __construct()
 	{
 		parent::__construct();
-		$this->load->helper('url');
-		$this->load->helper('number');
-		
-		$this->load->model('softs_model');
-		$this->load->model('tags_model');
-		$this->load->model('terms_model');
-		
 		$this->load->library('pagination');
 	}
 
@@ -26,7 +19,15 @@ class Page extends CI_Controller {
 		$data['map'] = $this->tags_model->get_tag_name($tag,TRUE);
 		$this->_get_list("tag",$tag,$data);
 	}
-
+	
+	/**
+	 * Get Page's content. Just for DRY.
+	 * 
+	 * @Author	Ichou
+	 * @param	String	$method	in(tag,term)
+	 * @param	Array	$param
+	 * @param	Array	$data
+	 */
 	function _get_list($method,$param = FALSE,$data = FALSE)
 	{
 		if(! $param) show_404();

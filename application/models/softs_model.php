@@ -31,6 +31,13 @@ class Softs_model extends CI_Model {
 
 	}
 	
+	/**
+	 * Get the number of softs under some limits.
+	 * 
+	 * @Author	Ichou
+	 * @param	Array $param
+	 * @return	Integer
+	 */
 	public function get_softs_num($param = FALSE)
 	{
 		$this->_set_sql($param);
@@ -61,9 +68,21 @@ class Softs_model extends CI_Model {
 		return $this->get_softs($query);
 	}
 	
+	/**
+	 * Get a soft by id or more limits.
+	 * 
+	 * @Author	Ichou	(2012.11.01)
+	 * @param	Mixed	$param
+	 * @return	Array
+	 */
 	public function get_soft($param = FALSE)
 	{
 		if(! $param) return FALSE;
+		
+		if(! is_array($param)){
+			$param = (int)$param;
+			$param && $param = array("where"=>"id = $param");
+		}
 		
 		$this->_set_sql($param);
 		$param['select'] || $this->db->select('softs.*,tag_name,term_name');
@@ -83,6 +102,12 @@ class Softs_model extends CI_Model {
 		return $result;
 	}
 	
+	/**
+	 * Format and rebulid the sql limits.
+	 * 
+	 * @Author	Ichou
+	 * @param	Array	$param
+	 */
 	function _set_sql($param = array())
 	{	
 		$this->db->from('softs');

@@ -6,6 +6,14 @@ class Tags_model extends CI_Model {
 		$this->load->database();
 	}
 	
+	/**
+	 * Get tags list.
+	 * 
+	 * @Author	Ichou
+	 * @param	Integer	$term	term_id
+	 * @param	Array	$param
+	 * @return	Array
+	 */
 	public function get_tags($term,$param = FALSE)
 	{
 		if(! is_int($term = (int)$term)) return FALSE;
@@ -27,7 +35,15 @@ class Tags_model extends CI_Model {
 		return($result);
 
 	}
-	
+
+	/**
+	 * Get tag's name (whith term's information or not).
+	 * 
+	 * @Author	Ichou
+	 * @param	Integer	$value		tag_id
+	 * @param	Blooean	$with_term
+	 * @return	Array
+	 */
 	public function get_tag_name($value = FALSE,$with_term = FALSE)
 	{
 		if($with_term){

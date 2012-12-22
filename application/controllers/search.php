@@ -5,13 +5,6 @@ class Search extends CI_Controller {
 	public function __construct()
 	{
 		parent::__construct();
-		$this->load->helper('url');
-		$this->load->helper('number');
-		
-		$this->load->model('softs_model');
-		$this->load->model('tags_model');
-		$this->load->model('terms_model');
-		
 		$this->load->library('pagination');
 	}
 

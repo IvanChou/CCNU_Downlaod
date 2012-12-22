@@ -5,7 +5,16 @@ class Comments_model extends CI_Model {
 	{
 		$this->load->database();
 	}
-	
+
+	/**
+	 * Get comments by soft_id.
+	 * 
+	 * @Author	Ichou
+	 * @param	Integer	$soft_id
+	 * @param	Integer	$limit
+	 * @param	Integer	$offset
+	 * @return	Array
+	 */
 	public function get_comments($soft_id=FALSE,$limit=FALSE,$offset=FALSE)
 	{
 		if(! $soft_id) return FALSE;
@@ -20,6 +29,13 @@ class Comments_model extends CI_Model {
 
 	}
 	
+	/**
+	 * Add a comment.
+	 * 
+	 * @Author	Ichou
+	 * @param	Array	$request
+	 * @return	Blooean
+	 */
 	public function add_comment($request=array())
 	{
 		$data = array(

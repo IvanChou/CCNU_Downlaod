@@ -5,14 +5,7 @@ class Home extends CI_Controller {
 	public function __construct()
 	{
 		parent::__construct();
-		$this->load->helper('url');
-		
-		$this->load->model('softs_model');
-		$this->load->model('tags_model');
-		$this->load->model('terms_model');
 		$this->load->model('home_model');
-		
-		$this->load->helper('number');
 	}
 
 	public function index()

@@ -37,7 +37,14 @@ class Terms_model extends CI_Model {
 		
 		return($result);
 	}
-	
+
+	/**
+	 * Get term's name.
+	 * 
+	 * @Author	Ichou
+	 * @param	Integer	$value		term_id
+	 * @return	Array
+	 */
 	public function get_term_name($value = FALSE)
 	{
 		$this->db->select('term_id,term_name');

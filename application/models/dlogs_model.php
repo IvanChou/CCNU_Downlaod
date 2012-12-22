@@ -6,6 +6,12 @@ class Dlogs_model extends CI_Model {
 		$this->load->database();
 	}
 	
+	/**
+	 * Add a down_log.
+	 * 
+	 * @Author	Ichou
+	 * @param	Integer	$id
+	 */
 	public function down($id = FALSE)
 	{
 		if(! $id) return FALSE;
@@ -28,6 +34,14 @@ class Dlogs_model extends CI_Model {
 		
 	}
 	
+	/**
+	 * Give the soft a appraisement.
+	 * 
+	 * @Author	Ichou
+	 * @param	Integer	$id
+	 * @param	String	$method	in(like,unlike)
+	 * @return	String
+	 */
 	public function appraise($id=FALSE,$method="like")
 	{
 		if(! $id) return FALSE;
@@ -61,6 +75,14 @@ class Dlogs_model extends CI_Model {
 		return "succeed";
 	}
 	
+	/**
+	 * Update soft's appraisement when the appraisement is changed.
+	 * 
+	 * @Author	Ichou
+	 * @param	Integer	$id
+	 * @param	String	$field	in(downer_top_count,downer_down_count)
+	 * @param	String	$method	in(+n,-n)
+	 */
 	function _up_into_soft($id,$field,$method)
 	{
 		$this->db->where('ID',$id);

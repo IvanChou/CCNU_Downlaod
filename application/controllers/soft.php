@@ -5,13 +5,8 @@ class Soft extends CI_Controller {
 	public function __construct()
 	{
 		parent::__construct();
-		$this->load->helper('url');
-		$this->load->helper('number');
 		$this->load->helper('download');
 		
-		$this->load->model('softs_model');
-		$this->load->model('tags_model');
-		$this->load->model('terms_model');
 		$this->load->model('comments_model');
 		$this->load->model('dlogs_model');
 		
@@ -28,7 +23,7 @@ class Soft extends CI_Controller {
 		$data['terms'] = $this->terms_model->get_terms(TRUE);
 		$data['top20'] = $this->softs_model->get_top_softs(20);
 		
-		$data['soft'] = $this->softs_model->get_soft(array("where"=>"id = $id"));
+		$data['soft'] = $this->softs_model->get_soft($id);
 		
 		$config['base_url'] = site_url("soft/show/$id");
 		$config['total_rows'] = count($this->comments_model->get_comments($id));
@@ -118,6 +113,14 @@ class Soft extends CI_Controller {
 		}
 	}
 	
+	/**
+	 * Judge a soft existing or not.
+	 * 
+	 * @Author	Ichou
+	 * @param	Integer	$id
+	 * @param	Blooean	$is_form
+	 * @param	Blooean
+	 */
 	function is_exist($id,$is_form=FALSE)
 	{
 		$id = (int)$id;

@@ -7,18 +7,30 @@ class Home_model extends CI_Model {
 	{
 		$this->load->model('softs_model');
 		
-		// Load the home config
+		// Load the ~/config/home.php
 		if(is_file(APPPATH . 'config/home.php')) {
 			include (APPPATH . 'config/home.php');
 		}
 		$this->home = (object)$home;
 	}
 	
+	/**
+	 * Get the web-notice from config.
+	 * 
+	 * @Author	Ichou
+	 * @return	String
+	 */
 	public function get_notice()
 	{
 		return $this->home->notice;
 	}
 	
+	/**
+	 * Get the often-used softs list from config.
+	 * 
+	 * @Author	Ichou
+	 * @return	Array
+	 */
 	public function get_often()
 	{
 		$often = $this->home->often;
@@ -37,6 +49,12 @@ class Home_model extends CI_Model {
 		return $often;
 	}
 	
+	/**
+	 * Get the must-need softs array from config.
+	 * 
+	 * @Author	Ichou
+	 * @return	Array
+	 */
 	public function get_need()
 	{
 		$need_title = $this->home->need_title;

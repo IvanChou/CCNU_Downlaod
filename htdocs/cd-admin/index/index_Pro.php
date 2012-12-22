@@ -50,7 +50,7 @@ if($info!=''&&$title!=''&&$often!=''&&$need!=''){
 		$i=0;
 		foreach($_POST['need'] as $da3){
 			if($i%5==0){
-				$need .= ',array(';
+				$need .= ','."\n							".'array(';
 			}
 			$need .= ','.$da3;
 			if($i%5==4){
@@ -58,13 +58,16 @@ if($info!=''&&$title!=''&&$often!=''&&$need!=''){
 			}
 			$i++;
 		}
-		$need .= ')';
+		$need .= "\n							".')';
 		$need = str_replace('array(,', 'array(', $need);
-		$data = '<?'.'php'.'  if ( ! defined('.'"BASEPATH"'.')) exit('.'"No direct script access allowed"'.' );';
-		$data .= ' $home["'.'notice'.'"] = '.'"'.$info.'";';
-		$data .= ' $home["'.'often'.'"] ='.$often.';';
-		$data .= ' $home["'.'need_title'.'"] ='.$title.';';
-		$data .= ' $home["'.'need'.'"] ='.$need.';';
+		$data = '<?'.'php'.'  if ( ! defined('.'"BASEPATH"'.')) exit('.'"No direct script access allowed"'.' );'."\n\n";
+		$data .= "/* This file is wrote by index_Pro.php from back-end */\n\n";
+		$data .= '$home["'.'notice'.'"]		= '.'"'.$info.'";'."\n";
+		$data .= '$home["'.'often'.'"]		= '.$often.';'."\n";
+		$data .= '$home["'.'need_title'.'"]	= '.$title.';'."\n";
+		$data .= '$home["'.'need'.'"]		= '.$need.';'."\n";
+		$data .= "\n/* End of file home.php */\n";
+		$data .= "/* Location: ./application/config/home.php */";
 		fwrite($fp, $data); 
 		fclose($fp);
 		header('location:../index.php?title=index&list=view');
