@@ -118,8 +118,8 @@ class Soft extends CI_Controller {
 	 * 
 	 * @Author	Ichou
 	 * @param	Integer	$id
-	 * @param	Blooean	$is_form
-	 * @param	Blooean
+	 * @param	Boolean	$is_form
+	 * @param	Boolean
 	 */
 	function is_exist($id,$is_form=FALSE)
 	{

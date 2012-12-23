@@ -41,7 +41,7 @@ class Tags_model extends CI_Model {
 	 * 
 	 * @Author	Ichou
 	 * @param	Integer	$value		tag_id
-	 * @param	Blooean	$with_term
+	 * @param	Boolean	$with_term
 	 * @return	Array
 	 */
 	public function get_tag_name($value = FALSE,$with_term = FALSE)

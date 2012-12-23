@@ -34,7 +34,7 @@ class Comments_model extends CI_Model {
 	 * 
 	 * @Author	Ichou
 	 * @param	Array	$request
-	 * @return	Blooean
+	 * @return	Boolean
 	 */
 	public function add_comment($request=array())
 	{
